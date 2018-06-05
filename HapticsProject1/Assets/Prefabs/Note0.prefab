@@ -9,43 +9,55 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1066227602865126}
+  m_RootGameObject: {fileID: 1306205382649320}
   m_IsPrefabParent: 1
---- !u!1 &1066227602865126
+--- !u!1 &1306205382649320
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4786290239492868}
-  - component: {fileID: 212294688456773194}
+  - component: {fileID: 4203537851962408}
+  - component: {fileID: 212853982581790844}
+  - component: {fileID: 114808563376400750}
   m_Layer: 0
-  m_Name: Note0
+  m_Name: Note0 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4786290239492868
+--- !u!4 &4203537851962408
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1066227602865126}
+  m_GameObject: {fileID: 1306205382649320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.201936, y: 0.24699545, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.61, y: 0.93, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &212294688456773194
+--- !u!114 &114808563376400750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1306205382649320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3878633599aef924d93595bc71bfb234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &212853982581790844
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1066227602865126}
+  m_GameObject: {fileID: 1306205382649320}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
