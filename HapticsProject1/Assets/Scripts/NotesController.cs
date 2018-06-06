@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NotesController : MonoBehaviour {
+    GameController notesData;
     GameObject gameController;
     int posisionx;
     int posisiony;
@@ -14,10 +15,11 @@ public class NotesController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gameController = GameObject.Find("GameController");
-        noteCount = gameController.GetComponent<_notesCount>();
+        notesData = gameController.GetComponent<GameController>();
+        noteCount = notesData._notesCount;
         //noteCount = gameController._notesCount;
-        posisionx = gameController._posx[noteCount];
-        posisiony = gameController._posy[noteCount];
+        posisionx = notesData._posx[noteCount];
+        posisiony = notesData._posy[noteCount];
         endposision = new Vector3(posisionx, posisiony, 0);
 
         //speed*= 0.1f;
