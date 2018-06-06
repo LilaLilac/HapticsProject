@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     private float[] _timing;
     public int[] _posx; //座標
     public int[] _posy;
-    //private int[] _direction; //なぞる向き
+    public int[] _direction; //なぞる向き
 
     public string filePass;
     public int _notesCount = 0;
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
         _timing = new float[1024];
         _posx = new int[1024];
         _posy = new int[1024];
-        //_direction = new int[1024];
+        _direction = new int[1024];
         LoadCSV();
         _startTime = Time.time;
     }
@@ -47,8 +47,11 @@ public class GameController : MonoBehaviour
     }
     void SpawnNotes(int num)
     {
+        int i;
+        Vector3[] spawn= new Vector3[]{new Vector3(-10, 8, 0), new Vector3(-10, -8, 0), new Vector3(10, 8, 0), new Vector3(10, -8, 0) };
+        i = UnityEngine.Random.Range(0,4);
         Instantiate(notes[num],
-            new Vector3(-4.0f + (2.0f * num), 10.0f, 0),
+            spawn[i],
             Quaternion.identity);
     }
 
@@ -66,8 +69,8 @@ public class GameController : MonoBehaviour
             {
                 _timing[i] = float.Parse(values[0]);
                 _posx[i] = int.Parse(values[1]);
-                _posy[i] = int.Parse(values[1]);
-                //_direction[i] = int.Parse(values[2]);
+                _posy[i] = int.Parse(values[2]);
+                _direction[i] = int.Parse(values[3]);
             }
             i++;
         }
