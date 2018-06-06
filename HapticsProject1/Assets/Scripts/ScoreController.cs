@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
+    public int i = 0;
     public float score = 0f;
     public float now = 0f;
-    private float start = 10.0f;//入力開始時刻
-    private float end = 16.0f;//入力終了時刻
+    private float[] timing = new float[10] { 1.0f, 4.0f, 7.0f, 10.0f, 14.0f,17.0f,20.0f,23.0f,26.0f,29.0f };//押す、離す時刻が交互に格納されたCSVを想定(今は5つのノーツ)
+    
     // Use this for initialization
     void Start()
     {
@@ -20,15 +21,15 @@ public class ScoreController : MonoBehaviour
     {
         now += Time.deltaTime;//現在の時刻取得
         GameObject.Find("Timer").GetComponent<Text>().text = now.ToString("F2"); //時刻ひょうじ
-        if (now >= start && now <= end)
+        while(now>=timing[i] && now <= timing[i + 1])
         {
             ScoreI();
+            if(now > timing[i + 1])
+            {
+                i += 1;
+            }
         }
-        else
-        {
-            ScoreD();
-        }
-
+        ScoreD();
     }
     void ScoreI()//入力すべきタイミングでの判定と点数表示
     {
