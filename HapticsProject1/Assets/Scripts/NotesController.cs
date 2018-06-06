@@ -7,7 +7,7 @@ public class NotesController : MonoBehaviour {
     GameObject gameController;
     int posisionx;
     int posisiony;
-    int noteCount;
+    int noteCount=0;
     int direction;
     Vector3 endposision;
     Vector3[] slidepos=new Vector3[] {
@@ -23,13 +23,15 @@ public class NotesController : MonoBehaviour {
 	void Start () {
         gameController = GameObject.Find("GameController");
         notesData = gameController.GetComponent<GameController>();
-        noteCount = notesData._notesCount;
+        noteCount = notesData._notesCount-1; //なぜかずれたので補正　後で直しておきたい
         //noteCount = gameController._notesCount;
         posisionx = notesData._posx[noteCount];
         posisiony = notesData._posy[noteCount];
         direction = notesData._direction[noteCount];
         endposision = new Vector3(posisionx, posisiony, 0);
 
+        Debug.Log("direction "+direction);
+        Debug.Log("notesCount with Notes "+noteCount);
         //speed*= 0.1f;
         //this.transform.Translate(-this.speed, 0, 0);
         iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision, "time", 3.0f, "easeType", "linear","delay", 1.0f));

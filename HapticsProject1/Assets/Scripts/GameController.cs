@@ -15,14 +15,18 @@ public class GameController : MonoBehaviour
     public string filePass;
     public int _notesCount = 0;
 
-    //private AudioSource _audioSource;
+    private AudioSource _audioSource;
     private float _startTime = 0;
 
     public float timeOffset = -1;
 
+    private bool _isPlaying = false;
+    public GameObject startButton;
+
 
     void Start()
     {
+        _audioSource = GameObject.Find("GameMusic").GetComponent<AudioSource>();
         _timing = new float[1024];
         _posx = new int[1024];
         _posy = new int[1024];
@@ -33,15 +37,30 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-         CheckNextNotes();
+        if (_isPlaying)
+        {
+            CheckNextNotes();
+            //scoreText.text = _score.ToString();
+        }
          //scoreText.text = _score.ToString();
+    }
+
+    public void StartGame()
+    {
+        startButton.SetActive(false);
+        _startTime = Time.time;
+        _audioSource.Play();
+        _isPlaying = true;
     }
 
     void CheckNextNotes()
     {
         while (_timing[_notesCount] + timeOffset < GetMusicTime() && _timing[_notesCount] != 0)
         {
-            SpawnNotes(UnityEngine.Random.Range(0, 5));
+            //SpawnNotes(UnityEngine.Random.Range(0, 5));
+            SpawnNotes(_direction[_notesCount]);
+            Debug.Log(_direction[_notesCount]);
+            Debug.Log("_notesCount "+_notesCount);
             _notesCount++;
         }
     }
