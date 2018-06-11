@@ -34,9 +34,9 @@ public class NotesController : MonoBehaviour {
         Debug.Log("notesCount with Notes "+noteCount);
         //speed*= 0.1f;
         //this.transform.Translate(-this.speed, 0, 0);
-        iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision, "time", 3.0f, "easeType", "linear","delay", 1.0f));
+        iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision, "time", 2.0f, "easeType", "linear","delay", 1.0f));
 
-        iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision+slidepos[direction], "time", 0.5f, "easeType", "linear"));
+        //iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision+slidepos[direction], "time", 0.5f, "easeType", "linear"));
     }
 
     // Update is called once per frame

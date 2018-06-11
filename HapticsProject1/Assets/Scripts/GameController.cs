@@ -55,9 +55,10 @@ public class GameController : MonoBehaviour
 
     void CheckNextNotes()
     {
-        while (_timing[_notesCount] + timeOffset < GetMusicTime() && _timing[_notesCount] != 0)
+        while (_timing[_notesCount] + timeOffset < GetMusicTime()-2.0f && _timing[_notesCount] != 0)
         {
             //SpawnNotes(UnityEngine.Random.Range(0, 5));
+            SpawnDummy(_notesCount);
             SpawnNotes(_direction[_notesCount]);
             Debug.Log(_direction[_notesCount]);
             Debug.Log("_notesCount "+_notesCount);
@@ -68,10 +69,15 @@ public class GameController : MonoBehaviour
     {
         int i;
         Vector3[] spawn= new Vector3[]{new Vector3(-10, 8, 0), new Vector3(-10, -8, 0), new Vector3(10, 8, 0), new Vector3(10, -8, 0) };
-        i = UnityEngine.Random.Range(0,4);
+        i = num % 4;
         Instantiate(notes[num],
             spawn[i],
             Quaternion.identity);
+    }
+
+    void SpawnDummy(int num)
+    {
+        Instantiate(notes[5], new Vector3(_posx[num], _posy[num], 0), Quaternion.identity);
     }
 
     void LoadCSV()

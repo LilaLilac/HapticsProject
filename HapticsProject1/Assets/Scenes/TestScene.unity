@@ -142,10 +142,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notes:
   - {fileID: 1306205382649320, guid: e9d6e1e8b205539438547a9ec6d15393, type: 2}
-  - {fileID: 1734767284115374, guid: fe82115785434534fb6afb835d6d5c2e, type: 2}
-  - {fileID: 1555972217505788, guid: 32c4ad0c8da98424999f6e6c5af15fd6, type: 2}
-  - {fileID: 1531260609595368, guid: 841bde6a54500ff40b62676e7c436413, type: 2}
-  - {fileID: 1116612785367848, guid: 87a18c48d786d5a42a14fecc0f723347, type: 2}
+  - {fileID: 1306205382649320, guid: e9d6e1e8b205539438547a9ec6d15393, type: 2}
+  - {fileID: 1306205382649320, guid: e9d6e1e8b205539438547a9ec6d15393, type: 2}
+  - {fileID: 1306205382649320, guid: e9d6e1e8b205539438547a9ec6d15393, type: 2}
+  - {fileID: 1306205382649320, guid: e9d6e1e8b205539438547a9ec6d15393, type: 2}
+  - {fileID: 1468654103095530, guid: 719619a85296632409374781a262dc88, type: 2}
   _posx: 
   _posy: 
   _direction: 
@@ -683,7 +684,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.7729619, g: 0.8025543, b: 0.8490566, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
