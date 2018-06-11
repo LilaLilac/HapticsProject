@@ -5,31 +5,28 @@ using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
-    public int i = 0;
     public float score = 0f;
     public float now = 0f;
-    private float[] timing = new float[10] { 1.0f, 4.0f, 7.0f, 10.0f, 14.0f,17.0f,20.0f,23.0f,26.0f,29.0f };//押す、離す時刻が交互に格納されたCSVを想定(今は5つのノーツ)
-    
-    // Use this for initialization
+    public int i = 0;
+    public float start = 3.0f;
+    public float end = 10.0f;
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         now += Time.deltaTime;//現在の時刻取得
         GameObject.Find("Timer").GetComponent<Text>().text = now.ToString("F2"); //時刻ひょうじ
-        while(now>=timing[i] && now <= timing[i + 1])
+        if (now >= start && now <= end)
         {
             ScoreI();
-            if(now > timing[i + 1])
-            {
-                i += 1;
-            }
         }
-        ScoreD();
+        else
+            ScoreD();
+
     }
     void ScoreI()//入力すべきタイミングでの判定と点数表示
     {
@@ -37,13 +34,13 @@ public class ScoreController : MonoBehaviour
         {
             score += 0.05f;
 
-            GameObject.Find("Comment").GetComponent<Text>().text="Good";
-            GameObject.Find("ScoreText").GetComponent<Text>().text= score.ToString("F0");
+            GameObject.Find("Comment").GetComponent<Text>().text = "Good";
+            GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
 
         }
         else
         {
-            if(score > 0)
+            if (score > 0)
             {
                 score -= 0.05f;
                 GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
@@ -55,15 +52,15 @@ public class ScoreController : MonoBehaviour
                 GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                 GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
             }
-            
+
         }
     }
     void ScoreD()//入力してはならない時の判定と点数表示
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            
-            GameObject.Find("Comment").GetComponent<Text>().text ="Bad";
+
+            GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
 
         }
