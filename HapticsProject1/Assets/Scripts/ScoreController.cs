@@ -10,10 +10,13 @@ public class ScoreController : MonoBehaviour
     public int i = 0;
     public float start = 3.0f;
     public float end = 10.0f;
+    public AudioClip  Success;
+    public AudioClip Fail;
+    AudioSource aud;
 
     void Start()
     {
-
+        this.aud = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -23,9 +26,11 @@ public class ScoreController : MonoBehaviour
         if (now >= start && now <= end)
         {
             ScoreI();
+            
         }
         else
             ScoreD();
+
 
     }
     void ScoreI()//入力すべきタイミングでの判定と点数表示
@@ -36,6 +41,7 @@ public class ScoreController : MonoBehaviour
 
             GameObject.Find("Comment").GetComponent<Text>().text = "Good";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+            this.aud.PlayOneShot(this.Success);
 
         }
         else
@@ -52,7 +58,7 @@ public class ScoreController : MonoBehaviour
                 GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                 GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
             }
-
+            this.aud.PlayOneShot(this.Fail);
         }
     }
     void ScoreD()//入力してはならない時の判定と点数表示
@@ -62,6 +68,7 @@ public class ScoreController : MonoBehaviour
 
             GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+            this.aud.PlayOneShot(this.Fail);
 
         }
         else
@@ -70,6 +77,7 @@ public class ScoreController : MonoBehaviour
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
 
         }
+        
     }
 }
 
