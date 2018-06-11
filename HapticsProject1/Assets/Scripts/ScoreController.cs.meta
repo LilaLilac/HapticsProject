@@ -6,6 +6,7 @@ MonoImporter:
   defaultReferences:
   - Success: {fileID: 8300000, guid: bf8396746e79a3146a618cb7d8f27327, type: 3}
   - Fail: {fileID: 8300000, guid: 151837ac1dd9495469a6a39efad9fdc2, type: 3}
+  - flower: {fileID: 1068347212039878, guid: 088dadd93036520478673b2342d7da1d, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

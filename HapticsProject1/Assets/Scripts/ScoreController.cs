@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class ScoreController : MonoBehaviour
 {
     public float score = 0f;
@@ -13,10 +12,14 @@ public class ScoreController : MonoBehaviour
     public AudioClip  Success;
     public AudioClip Fail;
     AudioSource aud;
+    GameObject azisai;
+
+    public GameObject flower;
 
     void Start()
     {
         this.aud = GetComponent<AudioSource>();
+        
     }
 
     void Update()
@@ -26,12 +29,14 @@ public class ScoreController : MonoBehaviour
         if (now >= start && now <= end)
         {
             ScoreI();
-            
+
         }
         else
             ScoreD();
-
-
+        if (GameObject.Find("Comment").GetComponent<Text>().text == "Good" && azisai == null)
+        {
+            azisai = Instantiate(flower, new Vector3(4,3,0), Quaternion.identity) as GameObject;
+        }
     }
     void ScoreI()//入力すべきタイミングでの判定と点数表示
     {
@@ -41,7 +46,7 @@ public class ScoreController : MonoBehaviour
 
             GameObject.Find("Comment").GetComponent<Text>().text = "Good";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-            this.aud.PlayOneShot(this.Success);
+            
 
         }
         else
@@ -58,7 +63,7 @@ public class ScoreController : MonoBehaviour
                 GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                 GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
             }
-            this.aud.PlayOneShot(this.Fail);
+            
         }
     }
     void ScoreD()//入力してはならない時の判定と点数表示
