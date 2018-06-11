@@ -35,30 +35,16 @@ public class NotesTimingMaker : MonoBehaviour
     }
     void DetectKeys()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             WriteNotesTiming(0);
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             WriteNotesTiming(1);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            WriteNotesTiming(2);
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            WriteNotesTiming(3);
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            WriteNotesTiming(4);
-        }
+        
     }
 
     void WriteNotesTiming(int num)
