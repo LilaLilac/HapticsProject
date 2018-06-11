@@ -44,8 +44,12 @@ public class DummyNotes : MonoBehaviour
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         currentRemainTime -= Time.deltaTime;
-        float newAlpha = 1 - currentRemainTime / fadeTime;
-        sprite.material.color=new Color(0,0,0,newAlpha);
+        if (currentRemainTime > 0)
+        {
+            float newAlpha = 1 - currentRemainTime / fadeTime;
+            sprite.material.color = new Color(1, 1, 1, newAlpha);
+        }
+        
         if (currentRemainTime < 0)
         {
             iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision + slidepos[direction], "time", 2.0f, "easeType", "linear", "delay", 1.0f));
