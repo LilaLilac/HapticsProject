@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212947249899667600}
   - component: {fileID: 114717452237541324}
   m_Layer: 0
-  m_Name: azisai 1
+  m_Name: azisaiPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
