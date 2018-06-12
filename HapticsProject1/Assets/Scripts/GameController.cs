@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public int[] _posx; //座標
     public int[] _posy;
     public int[] _direction; //なぞる向き
+    public int[] _SorE; //ノーツの始点あるいは終点
 
     public string filePass;
     public int _notesCount = 0;
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour
         _posx = new int[1024];
         _posy = new int[1024];
         _direction = new int[1024];
+        _SorE = new int[1024];
         LoadCSV();
         _startTime = Time.time;
     }
@@ -58,10 +60,14 @@ public class GameController : MonoBehaviour
         while (_timing[_notesCount] + timeOffset < GetMusicTime()-2.0f && _timing[_notesCount] != 0)
         {
             //SpawnNotes(UnityEngine.Random.Range(0, 5));
-            SpawnDummy(_notesCount);
-            SpawnNotes(_direction[_notesCount]);
-            Debug.Log(_direction[_notesCount]);
-            Debug.Log("_notesCount "+_notesCount);
+            if (_SorE[_notesCount] == 0)
+            {
+                SpawnDummy(_notesCount);
+            }
+            if (_SorE[_notesCount]==1)
+            {
+                SpawnNotes(_direction[_notesCount]);
+            }
             _notesCount++;
         }
     }
@@ -96,6 +102,7 @@ public class GameController : MonoBehaviour
                 _posx[i] = int.Parse(values[1]);
                 _posy[i] = int.Parse(values[2]);
                 _direction[i] = int.Parse(values[3]);
+                _SorE[i] = int.Parse(values[4]);
             }
             i++;
         }
