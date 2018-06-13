@@ -6,8 +6,8 @@ public class DummyNotes : MonoBehaviour
 {
     GameController notesData;
     GameObject gameController;
-    int posisionx;
-    int posisiony;
+    float posisionx;
+    float posisiony;
     int noteCount = 0;
     int direction;
     Vector3 endposision;
@@ -35,7 +35,7 @@ public class DummyNotes : MonoBehaviour
         noteCount = notesData._notesCount-1; 
         posisionx = notesData._posx[noteCount];
         posisiony = notesData._posy[noteCount];
-        direction = notesData._direction[noteCount];
+        //direction = notesData._direction[noteCount];
         endposision = new Vector3(posisionx, posisiony, 0);
     }
 
@@ -52,7 +52,7 @@ public class DummyNotes : MonoBehaviour
         
         if (currentRemainTime < 0)
         {
-            iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision + slidepos[direction], "time", 2.0f, "easeType", "linear", "delay", 1.0f));
+            //iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision + slidepos[direction], "time", 2.0f, "easeType", "linear", "delay", 1.0f));
         }
     }
 
