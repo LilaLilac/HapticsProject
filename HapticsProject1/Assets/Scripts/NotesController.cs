@@ -5,8 +5,8 @@ using UnityEngine;
 public class NotesController : MonoBehaviour {
     GameController notesData;
     GameObject gameController;
-    int posisionx;
-    int posisiony;
+    float posisionx;
+    float posisiony;
     int noteCount=0;
     int direction;
     Vector3 endposision;
@@ -33,7 +33,7 @@ public class NotesController : MonoBehaviour {
         //noteCount = gameController._notesCount;
         posisionx = notesData._posx[noteCount];
         posisiony = notesData._posy[noteCount];
-        direction = notesData._direction[noteCount];
+       
         endposision = new Vector3(posisionx, posisiony, 0);
 
         //Debug.Log("direction "+direction);

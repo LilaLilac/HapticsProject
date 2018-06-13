@@ -8,10 +8,10 @@ public class GameController : MonoBehaviour
 {
     public GameObject[] notes;
     private float[] _timing;
-    public int[] _posx; //座標
-    public int[] _posy;
-    public int[] _direction; //なぞる向き
-    public int[] _SorE; //ノーツの始点あるいは終点
+    public float[] _posx; //座標
+    public float[] _posy;
+    //public int[] _direction; //なぞる向き
+    //public int[] _SorE; //ノーツの始点あるいは終点
 
     public string filePass;
     public int _notesCount = 0;
@@ -29,10 +29,10 @@ public class GameController : MonoBehaviour
     {
         _audioSource = GameObject.Find("GameMusic").GetComponent<AudioSource>();
         _timing = new float[1024];
-        _posx = new int[1024];
-        _posy = new int[1024];
-        _direction = new int[1024];
-        _SorE = new int[1024];
+        _posx = new float[1024];
+        _posy = new float[1024];
+        //_direction = new int[1024];
+        //_SorE = new int[1024];
         LoadCSV();
         _startTime = Time.time;
     }
@@ -57,17 +57,15 @@ public class GameController : MonoBehaviour
 
     void CheckNextNotes()
     {
-        while (_timing[_notesCount] + timeOffset < GetMusicTime()-2.0f && _timing[_notesCount] != 0)
+        while (_timing[_notesCount] + timeOffset < GetMusicTime()-3.0f && _timing[_notesCount] != 0)
         {
             //SpawnNotes(UnityEngine.Random.Range(0, 5));
-            if (_SorE[_notesCount] == 0)
-            {
-                SpawnDummy(_notesCount);
-            }
-            if (_SorE[_notesCount]==1)
-            {
-                SpawnNotes(_direction[_notesCount]);
-            }
+            SpawnDummy(_notesCount,0);
+            //_notesCount++;
+        }
+        while (_timing[_notesCount] + timeOffset < GetMusicTime() && _timing[_notesCount] != 0)
+        {
+            SpawnDummy(_notesCount,1);
             _notesCount++;
         }
     }
@@ -81,9 +79,9 @@ public class GameController : MonoBehaviour
             Quaternion.identity);
     }
 
-    void SpawnDummy(int num)
+    void SpawnDummy(int num,int i)
     {
-        Instantiate(notes[5], new Vector3(_posx[num], _posy[num], 0), Quaternion.identity);
+        Instantiate(notes[i], new Vector3(_posx[num], _posy[num], 0), Quaternion.identity);
     }
 
     void LoadCSV()
@@ -99,10 +97,10 @@ public class GameController : MonoBehaviour
             for (j = 0; j < values.Length; j++)
             {
                 _timing[i] = float.Parse(values[0]);
-                _posx[i] = int.Parse(values[1]);
-                _posy[i] = int.Parse(values[2]);
-                _direction[i] = int.Parse(values[3]);
-                _SorE[i] = int.Parse(values[4]);
+                _posx[i] = float.Parse(values[1]);
+                _posy[i] = float.Parse(values[2]);
+                //_direction[i] = int.Parse(values[3]);
+                //_SorE[i] = int.Parse(values[4]);
             }
             i++;
         }
