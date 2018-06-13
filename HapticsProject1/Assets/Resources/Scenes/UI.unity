@@ -163,11 +163,8 @@ MonoBehaviour:
   score: 0
   now: 0
   i: 0
-  start: 3
-  end: 10
-  Success: {fileID: 8300000, guid: bf8396746e79a3146a618cb7d8f27327, type: 3}
-  Fail: {fileID: 8300000, guid: 151837ac1dd9495469a6a39efad9fdc2, type: 3}
-  flower: {fileID: 1114036692708258, guid: 5852ccb56942dc94db76d3cf6ebfb5d8, type: 2}
+  flower: {fileID: 0}
+  filePass: 
 --- !u!114 &238492601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,8 +278,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 159.48816, y: -59.00002}
-  m_SizeDelta: {x: 360, y: 40}
+  m_AnchoredPosition: {x: 264.2, y: 14.3}
+  m_SizeDelta: {x: 569.5, y: 186.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690800008
 MonoBehaviour:
@@ -298,11 +295,8 @@ MonoBehaviour:
   score: 0
   now: 0
   i: 0
-  start: 3
-  end: 10
-  Success: {fileID: 8300000, guid: bf8396746e79a3146a618cb7d8f27327, type: 3}
-  Fail: {fileID: 8300000, guid: 151837ac1dd9495469a6a39efad9fdc2, type: 3}
-  flower: {fileID: 1114036692708258, guid: 5852ccb56942dc94db76d3cf6ebfb5d8, type: 2}
+  flower: {fileID: 0}
+  filePass: 
 --- !u!114 &690800009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,10 +318,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 25
+    m_FontStyle: 3
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -746,11 +740,8 @@ MonoBehaviour:
   score: 0
   now: 0
   i: 0
-  start: 3
-  end: 10
-  Success: {fileID: 8300000, guid: bf8396746e79a3146a618cb7d8f27327, type: 3}
-  Fail: {fileID: 8300000, guid: 151837ac1dd9495469a6a39efad9fdc2, type: 3}
   flower: {fileID: 1114036692708258, guid: 5852ccb56942dc94db76d3cf6ebfb5d8, type: 2}
+  filePass: CSV/testtiming 1
 --- !u!4 &1804040342
 Transform:
   m_ObjectHideFlags: 0

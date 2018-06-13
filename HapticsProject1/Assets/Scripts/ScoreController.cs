@@ -13,10 +13,10 @@ public class ScoreController : MonoBehaviour
 
     public GameObject flower;
 
-    private float[] _start;
-    private float[] _end;
+    public float[] _start;
+    public float[] _end;
 
-    private int _notesCount = 0;
+    public int _notesCount = 0;
     public string filePass; //ここに読み込む譜面を入れる
 
     void Start()
@@ -51,6 +51,7 @@ public class ScoreController : MonoBehaviour
            
 
         }
+        
     }
 
     void ScoreI()//入力すべきタイミングでの判定と点数表示
@@ -118,5 +119,6 @@ public class ScoreController : MonoBehaviour
             i++;
         }
     }
+    
 }
 
