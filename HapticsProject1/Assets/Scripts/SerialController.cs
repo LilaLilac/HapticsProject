@@ -6,8 +6,10 @@ using System;
 using System.IO.Ports;
 using UnityEngine;
 using UniRx;
+using UnityEngine.UI;
+using System.IO;
 
-public class Serial : MonoBehaviour
+public class SerialController : MonoBehaviour
 {
 
     public string portName;
@@ -31,13 +33,15 @@ public class Serial : MonoBehaviour
         }
     }
 
-    public void ReadData()
+    public string ReadData()
     {
+        string message = "0";
         while (this.isLoop)
         {
-            string message = this.serial.ReadLine();
-            Debug.Log(message);
+            message = this.serial.ReadLine();
+        return message;
         }
+        return message;
     }
 
     void OnDestroy()
