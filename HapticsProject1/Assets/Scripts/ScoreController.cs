@@ -39,7 +39,7 @@ public class ScoreController : MonoBehaviour
         }
         else
             ScoreD();
-        if (GameObject.Find("Comment").GetComponent<Text>().text == "Good" && azisai == null)
+        if (GameObject.Find("Comment").GetComponent<Text>().text == "Good")
         {
             float px = Random.Range(-6.0f,6.0f);
             float py = Random.Range(-6.0f,6.0f);
@@ -53,6 +53,7 @@ public class ScoreController : MonoBehaviour
         }
         
     }
+
 
     void ScoreI()//入力すべきタイミングでの判定と点数表示
     {

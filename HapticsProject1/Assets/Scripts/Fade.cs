@@ -25,7 +25,7 @@ public class Fade : MonoBehaviour
         }
         else
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
         
     }
