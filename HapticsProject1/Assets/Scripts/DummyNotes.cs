@@ -19,15 +19,15 @@ public class DummyNotes : MonoBehaviour
     };
     //public float speed = 0;
 
-    public float fadeTime = 2.0f;
+    //public float fadeTime = 2.0f;
 
-    private float currentRemainTime;
+    //private float currentRemainTime;
 
 
     // Use this for initialization
     void Start()
     {
-        currentRemainTime = fadeTime;
+        //currentRemainTime = fadeTime;
         
 
         gameController = GameObject.Find("GameController");
@@ -43,7 +43,9 @@ public class DummyNotes : MonoBehaviour
     void Update()
     {
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        currentRemainTime -= Time.deltaTime;
+        sprite.material.color = new Color(1, 1, 1, 0);
+
+        /*currentRemainTime -= Time.deltaTime;
         if (currentRemainTime > 0)
         {
             float newAlpha = 1 - currentRemainTime / fadeTime;
@@ -53,7 +55,7 @@ public class DummyNotes : MonoBehaviour
         if (currentRemainTime < 0)
         {
             //iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision + slidepos[direction], "time", 2.0f, "easeType", "linear", "delay", 1.0f));
-        }
+        }*/
     }
 
 

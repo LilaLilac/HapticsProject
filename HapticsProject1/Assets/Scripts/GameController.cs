@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public float[] _posy;
     //public int[] _direction; //なぞる向き
     //public int[] _SorE; //ノーツの始点あるいは終点
+    //private float[] _dummytiming;
 
     public string filePass;
     public int _notesCount = 0;
@@ -57,14 +58,15 @@ public class GameController : MonoBehaviour
 
     void CheckNextNotes()
     {
-        while (_timing[_notesCount] + timeOffset < GetMusicTime()-3.0f && _timing[_notesCount] != 0)
+        /*while (_dummytiming[_notesCount] + timeOffset < GetMusicTime() && _timing[_notesCount] != 0)
         {
             //SpawnNotes(UnityEngine.Random.Range(0, 5));
             SpawnDummy(_notesCount,0);
             //_notesCount++;
-        }
+        }*/
         while (_timing[_notesCount] + timeOffset < GetMusicTime() && _timing[_notesCount] != 0)
         {
+            //SpawnDummy(_notesCount, 0);
             SpawnDummy(_notesCount,1);
             _notesCount++;
         }
@@ -101,6 +103,7 @@ public class GameController : MonoBehaviour
                 _posy[i] = float.Parse(values[2]);
                 //_direction[i] = int.Parse(values[3]);
                 //_SorE[i] = int.Parse(values[4]);
+                //_dummytiming[i] = _timing[i] - 0.5f;
             }
             i++;
         }
