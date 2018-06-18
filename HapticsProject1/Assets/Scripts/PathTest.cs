@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PathTest : MonoBehaviour
 {
-    public int time = 100;
+    public float time = 100;
     public string PathName = "New Path 1";
     private string Paths;
     private int num;
@@ -21,6 +21,7 @@ public class PathTest : MonoBehaviour
         gameController = GameObject.Find("GameController");
         notesData = gameController.GetComponent<GameController>();
         num = notesData._notesCount-1;
+        time = notesData._span[num];
 
         Paths = "Path "+num;
 
@@ -29,6 +30,7 @@ public class PathTest : MonoBehaviour
             "time", time,
             "easeType", iTween.EaseType.linear,
             "orienttopath", false));
+        //Debug.Log("num=" + num);
     }
 
     private void Update()
