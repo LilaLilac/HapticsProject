@@ -6,9 +6,9 @@ using System.IO;
 
 public class ScoreController : MonoBehaviour
 {
-    SerialController serialcontroller;
-    GameObject serial;
-    string signal;//シリアル通信から受け取った値を格納する
+    //SerialController serialcontroller;
+    //GameObject serial;
+    //string signal;//シリアル通信から受け取った値を格納する
 
     public float score = 0f;
     public float now = 0f;
@@ -25,8 +25,8 @@ public class ScoreController : MonoBehaviour
 
     void Start()
     {
-        serial = GameObject.Find("SerialController");
-        serialcontroller = serial.GetComponent<SerialController>();
+        //serial = GameObject.Find("SerialController");
+        //serialcontroller = serial.GetComponent<SerialController>();
         _start = new float[1024];
         _end = new float[1024];
         LoadCSV();
@@ -34,7 +34,7 @@ public class ScoreController : MonoBehaviour
 
     void Update()
     {
-        signal = serialcontroller.ReadData();//メッセージの表示
+        //signal = serialcontroller.ReadData();//1か0の文字列
         now += Time.deltaTime;//現在の時刻取得
         GameObject.Find("Timer").GetComponent<Text>().text = now.ToString("F2"); //時刻ひょうじ
         Debug.Log(now);
@@ -64,7 +64,7 @@ public class ScoreController : MonoBehaviour
 
     void ScoreI()//入力すべきタイミングでの判定と点数表示
     {
-        if (signal=="1")
+        if (Input.GetKey(KeyCode.Space))
         {
             score += 0.05f;
 
@@ -92,7 +92,7 @@ public class ScoreController : MonoBehaviour
     }
     void ScoreD()//入力してはならない時の判定と点数表示
     {
-        if (signal=="1")
+        if (Input.GetKey(KeyCode.Space))
         {
 
             GameObject.Find("Comment").GetComponent<Text>().text = "Bad";

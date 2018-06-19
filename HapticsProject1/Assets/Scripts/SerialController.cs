@@ -13,14 +13,13 @@ public class SerialController : MonoBehaviour
 {
 
     public string portName;
-    public int baurate;
+    public int baudrate;
 
     SerialPort serial;
     bool isLoop = true;
-
     void Start()
     {
-        this.serial = new SerialPort(portName, baurate, Parity.None, 8, StopBits.One);
+        this.serial = new SerialPort(portName, baudrate, Parity.None, 8, StopBits.One);
 
         try
         {
@@ -32,17 +31,18 @@ public class SerialController : MonoBehaviour
             Debug.Log("can not open serial port");
         }
     }
-
-    public string ReadData()
+    public void ReadData()
     {
         string message = "0";
         while (this.isLoop)
         {
             message = this.serial.ReadLine();
-        return message;
+            Debug.Log(message);
         }
-        return message;
+        Debug.Log(message);
     }
+    
+    
 
     void OnDestroy()
     {

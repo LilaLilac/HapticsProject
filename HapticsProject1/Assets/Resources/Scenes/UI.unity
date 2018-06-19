@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe93cbec65c2d2d44bbcdb4aa822cfe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM1
+  portName: COM7
   baurate: 0
 --- !u!4 &1425446525
 Transform:
@@ -1207,11 +1207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f180178eb2f774c99dc3bdeb7f111e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM1
-  baudRate: 9600
-  isRunning_: 0
-  message_: 
-  isNewMessageReceived_: 0
 --- !u!1 &1999663874
 GameObject:
   m_ObjectHideFlags: 0
