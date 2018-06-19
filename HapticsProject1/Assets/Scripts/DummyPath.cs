@@ -11,16 +11,19 @@ public class DummyPath : MonoBehaviour
     GameController notesData;
     GameObject gameController;
 
-    public float fadeTime = 0.5f;
-    private float currentRemainTime;
+    //public float fadeTime = 0.5f;
+    //private float currentRemainTime;
 
     void Start()
     {
-        currentRemainTime = fadeTime;
+        //currentRemainTime = fadeTime;
 
         gameController = GameObject.Find("GameController");
         notesData = gameController.GetComponent<GameController>();
-        num = notesData._notesCount-1;
+        num = notesData._dummyCount-1;
+
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        sprite.material.color = new Color(1, 1, 1, 0);
 
         Paths = "Path "+num;
 
@@ -29,12 +32,13 @@ public class DummyPath : MonoBehaviour
             "time", time,
             "easeType", iTween.EaseType.linear,
             "orienttopath", false));
+        
     }
 
     private void Update()
     {
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        currentRemainTime -= Time.deltaTime;
+        //SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        /*currentRemainTime -= Time.deltaTime;
         if (currentRemainTime > 0)
         {
             float newAlpha = currentRemainTime / fadeTime;
@@ -44,6 +48,6 @@ public class DummyPath : MonoBehaviour
         if (currentRemainTime < 0)
         {
             //Destroy(gameObject);
-        }
+        }*/
     }
 }

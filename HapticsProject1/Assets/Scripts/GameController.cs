@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public GameObject[] notes;
-    private float[] _timing;
+    private float[] _start;
+    private float[] _end;
+    public float[] _span;
     public float[] _posx; //座標
     public float[] _posy;
     //public int[] _direction; //なぞる向き
@@ -16,9 +18,11 @@ public class GameController : MonoBehaviour
 
     public string filePass;
     public int _notesCount = 0;
+    public int _dummyCount = 0;
 
     private AudioSource _audioSource;
     private float _startTime = 0;
+
 
     public float timeOffset = -1;
 
@@ -29,13 +33,16 @@ public class GameController : MonoBehaviour
     void Start()
     {
         _audioSource = GameObject.Find("GameMusic").GetComponent<AudioSource>();
-        _timing = new float[1024];
+        _start = new float[1024];
+        _end = new float[1024];
+        _span = new float[1024];
         _posx = new float[1024];
         _posy = new float[1024];
         //_direction = new int[1024];
         //_SorE = new int[1024];
         LoadCSV();
         _startTime = Time.time;
+        //_dummytiming = new float[1024];
     }
 
     void Update()
@@ -58,16 +65,17 @@ public class GameController : MonoBehaviour
 
     void CheckNextNotes()
     {
-        /*while (_dummytiming[_notesCount] + timeOffset < GetMusicTime() && _timing[_notesCount] != 0)
+        while (_start[_dummyCount] + timeOffset-2.0f< GetMusicTime() && _start[_dummyCount] != 0)
         {
             //SpawnNotes(UnityEngine.Random.Range(0, 5));
-            SpawnDummy(_notesCount,0);
-            //_notesCount++;
-        }*/
-        while (_timing[_notesCount] + timeOffset < GetMusicTime() && _timing[_notesCount] != 0)
+            SpawnDummy(_dummyCount,0);
+            _dummyCount++;
+        }
+        while (_start[_notesCount] + timeOffset< GetMusicTime() && _start[_notesCount] != 0)
         {
             //SpawnDummy(_notesCount, 0);
             SpawnDummy(_notesCount,1);
+            //Debug.Log("_notesCount="+_notesCount);
             _notesCount++;
         }
     }
@@ -98,12 +106,15 @@ public class GameController : MonoBehaviour
             string[] values = line.Split(',');
             for (j = 0; j < values.Length; j++)
             {
-                _timing[i] = float.Parse(values[0]);
-                _posx[i] = float.Parse(values[1]);
-                _posy[i] = float.Parse(values[2]);
+                _start[i] = float.Parse(values[0]);
+                _end[i] = float.Parse(values[1]);
+                _posx[i] = float.Parse(values[2]);
+                _posy[i] = float.Parse(values[3]);
                 //_direction[i] = int.Parse(values[3]);
                 //_SorE[i] = int.Parse(values[4]);
-                //_dummytiming[i] = _timing[i] - 0.5f;
+                //_dummytiming[i] = _start[i] - 1.0f;
+
+                _span[i] = _end[i] - _start[i];
             }
             i++;
         }
