@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public GameObject[] notes;
-    private float[] _start;
-    private float[] _end;
+    public GameObject pointer;
+    public float[] _start;
+    public float[] _end;
     public float[] _span;
     public float[] _posx; //座標
     public float[] _posy;
@@ -61,6 +62,7 @@ public class GameController : MonoBehaviour
         _startTime = Time.time;
         _audioSource.Play();
         _isPlaying = true;
+        Instantiate(pointer);
     }
 
     void CheckNextNotes()

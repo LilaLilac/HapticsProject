@@ -143,6 +143,9 @@ MonoBehaviour:
   notes:
   - {fileID: 1338520609946232, guid: 7ed2035c793fb4343aa2f5ba2fcf128f, type: 2}
   - {fileID: 1341365485417002, guid: 20a92d280e96f26459c9dd03dc0099ad, type: 2}
+  pointer: {fileID: 1240918178880332, guid: 5309bf80c2f093943b80ca908f0c1d48, type: 2}
+  _start: []
+  _end: []
   _span: []
   _posx: []
   _posy: []
