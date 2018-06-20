@@ -71,13 +71,14 @@ public class GameController : MonoBehaviour
         {
             //SpawnNotes(UnityEngine.Random.Range(0, 5));
             SpawnDummy(_dummyCount,0);
+            Debug.Log("MusicTime = " + GetMusicTime());
             _dummyCount++;
         }
         while (_start[_notesCount] + timeOffset< GetMusicTime() && _start[_notesCount] != 0)
         {
             //SpawnDummy(_notesCount, 0);
             SpawnDummy(_notesCount,1);
-            //Debug.Log("_notesCount="+_notesCount);
+            Debug.Log("MusicTime = "+GetMusicTime());
             _notesCount++;
         }
     }
@@ -121,7 +122,7 @@ public class GameController : MonoBehaviour
             i++;
         }
     }
-    float GetMusicTime()
+    public float GetMusicTime()
     {
         return Time.time - _startTime;
     }
