@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portName: COM7
-  baurate: 0
+  baurate: 9600
 --- !u!4 &1425446525
 Transform:
   m_ObjectHideFlags: 0
