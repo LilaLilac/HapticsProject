@@ -71,14 +71,14 @@ public class GameController : MonoBehaviour
         {
             //SpawnNotes(UnityEngine.Random.Range(0, 5));
             SpawnDummy(_dummyCount,0);
-            Debug.Log("MusicTime = " + GetMusicTime());
+            //Debug.Log("MusicTime = " + GetMusicTime());
             _dummyCount++;
         }
         while (_start[_notesCount] + timeOffset< GetMusicTime() && _start[_notesCount] != 0)
         {
             //SpawnDummy(_notesCount, 0);
             SpawnDummy(_notesCount,1);
-            Debug.Log("MusicTime = "+GetMusicTime());
+            //Debug.Log("MusicTime = "+GetMusicTime());
             _notesCount++;
         }
     }

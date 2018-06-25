@@ -14,6 +14,9 @@ public class PathTest : MonoBehaviour
     public float fadeTime = 2.0f;
     private float currentRemainTime;
 
+
+
+
     void Start()
     {
         currentRemainTime = fadeTime;
@@ -31,10 +34,23 @@ public class PathTest : MonoBehaviour
             "easeType", iTween.EaseType.linear,
             "orienttopath", false));
         //Debug.Log("num=" + num);
+
+
+        
     }
 
     private void Update()
     {
+        if (Input.GetKey(KeyCode.Space))
+        {
+ 
+            GetComponent<ParticleSystem>().Play(true);
+        }
+        else
+        {
+            GetComponent<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
+
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         currentRemainTime -= Time.deltaTime;
         if (currentRemainTime > 0)
@@ -45,7 +61,7 @@ public class PathTest : MonoBehaviour
 
         if (currentRemainTime < 0)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

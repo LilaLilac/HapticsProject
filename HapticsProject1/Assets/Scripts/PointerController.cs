@@ -68,8 +68,8 @@ public class PointerController : MonoBehaviour
 
     public void MoveNext(int i)
     {
-        Debug.Log(timeList[i]);
-        Debug.Log(i);
+        //Debug.Log(timeList[i]);
+        //Debug.Log(i);
         if (i % 2 == 0)
         {
             iTween.MoveTo(this.gameObject, iTween.Hash(
@@ -96,7 +96,7 @@ public class PointerController : MonoBehaviour
         
         if (notesData.GetMusicTime() > timeList[num]+notesData.timeOffset)
         {
-            Debug.Log("pointerTime = " + currentTime);
+            //Debug.Log("pointerTime = " + currentTime);
             MoveNext(num);
             num++;            
         }
