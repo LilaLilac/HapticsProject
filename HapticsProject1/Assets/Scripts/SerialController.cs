@@ -41,7 +41,18 @@ public class SerialController : MonoBehaviour
         }
         return message;
     }
+    public void Write(string message)
+    {
+        try
+        {
+            serial.Write(message);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogWarning(e.Message);
+        }
 
+    }
     void OnDestroy()
     {
         this.isLoop = false;

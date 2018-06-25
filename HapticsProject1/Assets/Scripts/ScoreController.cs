@@ -46,6 +46,7 @@ public class ScoreController : MonoBehaviour
         }
         else
             ScoreD();
+        serialcontroller.Write("1");
         if (GameObject.Find("Comment").GetComponent<Text>().text == "Good")
         {
             float px = Random.Range(-6.0f,6.0f);
