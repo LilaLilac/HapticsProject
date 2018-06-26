@@ -5,7 +5,6 @@ using System;
 using System.IO.Ports;
 using UnityEngine;
 using UniRx;
-using UnityEngine.UI;
 
 public class SerialController : MonoBehaviour
 {
@@ -51,8 +50,8 @@ public class SerialController : MonoBehaviour
         {
             Debug.LogWarning(e.Message);
         }
-
     }
+
     void OnDestroy()
     {
         this.isLoop = false;

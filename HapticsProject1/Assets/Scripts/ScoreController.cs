@@ -42,11 +42,11 @@ public class ScoreController : MonoBehaviour
         if (now >= _start[_notesCount] && now <= _end[_notesCount])
         {
             ScoreI();
+            
 
         }
         else
             ScoreD();
-        serialcontroller.Write("1");
         if (GameObject.Find("Comment").GetComponent<Text>().text == "Good")
         {
             float px = Random.Range(-6.0f,6.0f);
@@ -71,7 +71,8 @@ public class ScoreController : MonoBehaviour
 
             GameObject.Find("Comment").GetComponent<Text>().text = "Good";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-            
+            serialcontroller.Write("0");
+
 
         }
         else
@@ -81,12 +82,13 @@ public class ScoreController : MonoBehaviour
                 score -= 0.05f;
                 GameObject.Find("Comment").GetComponent<Text>().text = "Miss";
                 GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-
+                serialcontroller.Write("1");
             }
             else
             {
                 GameObject.Find("Comment").GetComponent<Text>().text = "Miss";
                 GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+                serialcontroller.Write("1");
             }
             
         }
@@ -96,14 +98,16 @@ public class ScoreController : MonoBehaviour
         if (signal == "1")
         {
 
-            GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
+            GameObject.Find("Comment").GetComponent<Text>().text = "Miss";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+            serialcontroller.Write("1");
 
         }
         else
         {
             GameObject.Find("Comment").GetComponent<Text>().text = "";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+            serialcontroller.Write("0");
 
         }
         
