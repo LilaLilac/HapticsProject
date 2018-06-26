@@ -42,7 +42,6 @@ public class ScoreController : MonoBehaviour
         if (now >= _start[_notesCount] && now <= _end[_notesCount])
         {
             ScoreI();
-            
 
         }
         else
