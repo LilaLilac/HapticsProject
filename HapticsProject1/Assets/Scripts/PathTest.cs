@@ -41,7 +41,7 @@ public class PathTest : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        /*if (Input.GetKey(KeyCode.Space))
         {
  
             GetComponent<ParticleSystem>().Play(true);
@@ -49,7 +49,7 @@ public class PathTest : MonoBehaviour
         else
         {
             GetComponent<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        }
+        }*/
 
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         currentRemainTime -= Time.deltaTime;

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public GameObject[] notes;
-    public GameObject pointer;
+    //public GameObject pointer;
     public float[] _start;
     public float[] _end;
     public float[] _span;
@@ -18,8 +18,11 @@ public class GameController : MonoBehaviour
     //private float[] _dummytiming;
 
     public string filePass;
-    public int _notesCount = 0;
-    public int _dummyCount = 0;
+    public int _notesCount = 0; //ノーツ生成用
+    public int _dummyCount = 0; //ガイド用ライン生成用
+
+    private int _begin = 0; //押し始め判定
+    private int _release = 0; //離すタイミング判定
 
     private AudioSource _audioSource;
     private float _startTime = 0;
@@ -30,6 +33,12 @@ public class GameController : MonoBehaviour
     private bool _isPlaying = false;
     public GameObject startButton;
 
+    private bool _isHold = false;
+    public float score = 0f;
+
+    public GameObject great;
+    public GameObject good;
+    public GameObject bad;
 
     void Start()
     {
@@ -50,8 +59,84 @@ public class GameController : MonoBehaviour
     {
         if (_isPlaying)
         {
+            GameObject.Find("Timer").GetComponent<Text>().text = GetMusicTime().ToString("F2");
             CheckNextNotes();
             //scoreText.text = _score.ToString();
+
+            if (Input.GetKeyDown(KeyCode.Space))　//押し始め判定
+            {
+                if (GetMusicTime() - _start[_begin]>=-0.1f && GetMusicTime() - _start[_begin]<= 0.1f)
+                {
+                    score += 100f;
+              
+                    GameObject.Find("Comment").GetComponent<Text>().text = "Great";
+                    GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+                    Instantiate(great, new Vector3(_posx[_begin],_posy[_begin],0),Quaternion.identity);
+
+                    _begin++;
+                }
+                else if (GetMusicTime() - _start[_begin] >= -0.15f && GetMusicTime() - _start[_begin] <= 0.15f)
+                {
+                    score += 50f;
+
+                    GameObject.Find("Comment").GetComponent<Text>().text = "Good";
+                    GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+                    Instantiate(good, new Vector3(_posx[_begin], _posy[_begin], 0), Quaternion.identity);
+
+                    _begin++;
+                }
+                else if (GetMusicTime() - _start[_begin] >= -0.6f && GetMusicTime() - _start[_begin] <= 0.6f)
+                {
+
+                    GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
+                    GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+                    Instantiate(bad, new Vector3(_posx[_begin], _posy[_begin], 0), Quaternion.identity);
+
+                    _begin++;
+                }
+                else
+                {
+
+                }
+                _isHold = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (_isHold)
+                {
+                    if (GetMusicTime() - _end[_release] >= -0.1f && GetMusicTime() - _end[_release] <= 0.1f)
+                    {
+                        score += 100f;
+
+                        GameObject.Find("Comment").GetComponent<Text>().text = "Great";
+                        GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+                        //パスの終わりにエフェクトを入れたい　保持リストを作っていないので別途読み込み
+                        _release++;
+                    }
+                    else if (GetMusicTime() - _end[_release] >= -0.15f && GetMusicTime() - _end[_release] <= 0.15f)
+                    {
+                        score += 50f;
+
+                        GameObject.Find("Comment").GetComponent<Text>().text = "Good";
+                        GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+                        _release++;
+                    }
+                    else if (GetMusicTime() - _end[_release] >= -0.6f && GetMusicTime() - _end[_release] <= 0.6f)
+                    {
+
+                        GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
+                        GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+                        _release++;
+                    }
+                    else
+                    {
+
+                    }
+                    _isHold = false;
+                }
+            }
+            
         }
          //scoreText.text = _score.ToString();
     }
@@ -62,21 +147,27 @@ public class GameController : MonoBehaviour
         _startTime = Time.time;
         _audioSource.Play();
         _isPlaying = true;
-        Instantiate(pointer);
+        //Instantiate(pointer);
     }
 
     void CheckNextNotes()
     {
         while (_start[_dummyCount] + timeOffset-2.0f< GetMusicTime() && _start[_dummyCount] != 0)
         {
-            //SpawnNotes(UnityEngine.Random.Range(0, 5));
+            /*if (_begin != _dummyCount&&_dummyCount!=0) //正しくカウントが進んでない（ミスした後）の調整　後日修正
+            {
+                _begin = _dummyCount;
+            }*/
             SpawnDummy(_dummyCount,0);
             //Debug.Log("MusicTime = " + GetMusicTime());
             _dummyCount++;
         }
-        while (_start[_notesCount] + timeOffset< GetMusicTime() && _start[_notesCount] != 0)
+        while (_start[_notesCount] < GetMusicTime() && _start[_notesCount] != 0)
         {
-            //SpawnDummy(_notesCount, 0);
+            /*if (_release!= _notesCount&&_notesCount!=0)
+            {
+                _release = _notesCount;
+            }*/
             SpawnDummy(_notesCount,1);
             //Debug.Log("MusicTime = "+GetMusicTime());
             _notesCount++;

@@ -69,6 +69,8 @@ public class ScoreControllerMk2 : MonoBehaviour
             if (now > _end[_notesCount])
             {
                 _notesCount += 1;
+                Debug.Log("ScoreTime= "+now);
+                Debug.Log("ScoreNote= "+_notesCount);
             }
         }
     }
