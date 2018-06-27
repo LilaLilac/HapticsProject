@@ -35,10 +35,15 @@ public class GameController : MonoBehaviour
 
     private bool _isHold = false;
     public float score = 0f;
-
+    
     public GameObject great;
     public GameObject good;
     public GameObject bad;
+
+    public int Great=0;
+    public int Good=0;
+    public int Bad=0;
+    //public static int[] finalResult;
 
     void Start()
     {
@@ -53,6 +58,9 @@ public class GameController : MonoBehaviour
         LoadCSV();
         _startTime = Time.time;
         //_dummytiming = new float[1024];
+
+        //Result = new int[5]; //great,good,bad,notes
+        
     }
 
     void Update()
@@ -73,6 +81,8 @@ public class GameController : MonoBehaviour
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                     Instantiate(great, new Vector3(_posx[_begin],_posy[_begin],0),Quaternion.identity);
 
+                    Great++ ;
+
                     _begin++;
                 }
                 else if (GetMusicTime() - _start[_begin] >= -0.15f && GetMusicTime() - _start[_begin] <= 0.15f)
@@ -83,6 +93,8 @@ public class GameController : MonoBehaviour
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                     Instantiate(good, new Vector3(_posx[_begin], _posy[_begin], 0), Quaternion.identity);
 
+                    Good++;
+
                     _begin++;
                 }
                 else if (GetMusicTime() - _start[_begin] >= -0.6f && GetMusicTime() - _start[_begin] <= 0.6f)
@@ -91,6 +103,8 @@ public class GameController : MonoBehaviour
                     GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                     Instantiate(bad, new Vector3(_posx[_begin], _posy[_begin], 0), Quaternion.identity);
+
+                    Bad++;
 
                     _begin++;
                 }
@@ -112,6 +126,9 @@ public class GameController : MonoBehaviour
                         GameObject.Find("Comment").GetComponent<Text>().text = "Great";
                         GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                         //パスの終わりにエフェクトを入れたい　保持リストを作っていないので別途読み込み
+
+                        Great++;
+
                         _release++;
                     }
                     else if (GetMusicTime() - _end[_release] >= -0.15f && GetMusicTime() - _end[_release] <= 0.15f)
@@ -120,6 +137,9 @@ public class GameController : MonoBehaviour
 
                         GameObject.Find("Comment").GetComponent<Text>().text = "Good";
                         GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+
+                        Good ++ ;
+
                         _release++;
                     }
                     else if (GetMusicTime() - _end[_release] >= -0.6f && GetMusicTime() - _end[_release] <= 0.6f)
@@ -127,6 +147,9 @@ public class GameController : MonoBehaviour
 
                         GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                         GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+
+                        Bad++;
+
                         _release++;
                     }
                     else
@@ -164,6 +187,7 @@ public class GameController : MonoBehaviour
         }
         while (_start[_notesCount] < GetMusicTime() && _start[_notesCount] != 0)
         {
+
             /*if (_release!= _notesCount&&_notesCount!=0)
             {
                 _release = _notesCount;
@@ -171,6 +195,7 @@ public class GameController : MonoBehaviour
             SpawnDummy(_notesCount,1);
             //Debug.Log("MusicTime = "+GetMusicTime());
             _notesCount++;
+
         }
     }
     void SpawnNotes(int num)
@@ -217,4 +242,6 @@ public class GameController : MonoBehaviour
     {
         return Time.time - _startTime;
     }
+
+    
 }
