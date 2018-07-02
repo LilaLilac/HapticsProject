@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     SerialController serialcontroller;
     GameObject serial;
-    public string signal;//シリアル通信から受け取った値を格納する
+    //public string signal;//シリアル通信から受け取った値を格納する
 
 
     public GameObject[] notes;
@@ -62,18 +62,18 @@ public class GameController : MonoBehaviour
         //_dummytiming = new float[1024];
     }
 
+
     void Update()
     {
-        signal = serialcontroller.ReadData();//1か0の文字列
-        Debug.Log(signal);
-        serialcontroller.Write("0");
+        
+       
         if (_isPlaying)
         {
             GameObject.Find("Timer").GetComponent<Text>().text = GetMusicTime().ToString("F2");
             CheckNextNotes();
             //scoreText.text = _score.ToString();
 
-            if (signal == "1")　//押し始め判定
+            if (serialcontroller.ReadData()== "1" )　//押し始め判定
             {
                 if (GetMusicTime() - _start[_begin]>=-0.1f && GetMusicTime() - _start[_begin]<= 0.1f)
                 {
@@ -82,7 +82,7 @@ public class GameController : MonoBehaviour
                     GameObject.Find("Comment").GetComponent<Text>().text = "Great";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                     Instantiate(great, new Vector3(_posx[_begin],_posy[_begin],0),Quaternion.identity);
-                    //serialcontroller.Write("0");
+                    serialcontroller.Write("0");
 
                     _begin++;
                 }
@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
                     GameObject.Find("Comment").GetComponent<Text>().text = "Good";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                     Instantiate(good, new Vector3(_posx[_begin], _posy[_begin], 0), Quaternion.identity);
-                   // serialcontroller.Write("0");
+                    serialcontroller.Write("0");
 
                     _begin++;
                 }
@@ -103,18 +103,18 @@ public class GameController : MonoBehaviour
                     GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                     Instantiate(bad, new Vector3(_posx[_begin], _posy[_begin], 0), Quaternion.identity);
-                   // serialcontroller.Write("1");
+                    serialcontroller.Write("1");
 
                     _begin++;
                 }
                 else
                 {
-                    if(signal == "1") serialcontroller.Write("1");
+                    
                 }
                 _isHold = true;
             }
 
-            if (signal == "1")
+            if (serialcontroller.ReadData()=="1")
             {
                 if (_isHold)
                 {
@@ -124,7 +124,7 @@ public class GameController : MonoBehaviour
 
                         GameObject.Find("Comment").GetComponent<Text>().text = "Great";
                         GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-                       // serialcontroller.Write("0");
+                        serialcontroller.Write("0");
                         //パスの終わりにエフェクトを入れたい　保持リストを作っていないので別途読み込み
                         _release++;
                     }
@@ -134,7 +134,7 @@ public class GameController : MonoBehaviour
 
                         GameObject.Find("Comment").GetComponent<Text>().text = "Good";
                         GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-                       // serialcontroller.Write("0");
+                        serialcontroller.Write("0");
                         _release++;
                     }
                     else if (GetMusicTime() - _end[_release] >= -0.6f && GetMusicTime() - _end[_release] <= 0.6f)
@@ -142,7 +142,7 @@ public class GameController : MonoBehaviour
 
                         GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                         GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-                       // serialcontroller.Write("1");
+                        serialcontroller.Write("1");
                         _release++;
                     }
                     else
