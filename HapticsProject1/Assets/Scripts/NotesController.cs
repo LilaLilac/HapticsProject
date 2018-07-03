@@ -31,8 +31,8 @@ public class NotesController : MonoBehaviour {
         notesData = gameController.GetComponent<GameController>();
         noteCount = notesData._notesCount-1; //なぜかずれたので補正　後で直しておきたい
         //noteCount = gameController._notesCount;
-        posisionx = notesData._posx[noteCount];
-        posisiony = notesData._posy[noteCount];
+        posisionx = notesData._posx1[noteCount];
+        posisiony = notesData._posy1[noteCount];
        
         endposision = new Vector3(posisionx, posisiony, 0);
 

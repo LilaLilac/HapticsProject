@@ -11,8 +11,10 @@ public class GameController : MonoBehaviour
     public float[] _start;
     public float[] _end;
     public float[] _span;
-    public float[] _posx; //座標
-    public float[] _posy;
+    public float[] _posx1; //座標
+    public float[] _posy1;
+    public float[] _posx2;
+    public float[] _posy2;
     //public int[] _direction; //なぞる向き
     //public int[] _SorE; //ノーツの始点あるいは終点
     //private float[] _dummytiming;
@@ -51,8 +53,10 @@ public class GameController : MonoBehaviour
         _start = new float[1024];
         _end = new float[1024];
         _span = new float[1024];
-        _posx = new float[1024];
-        _posy = new float[1024];
+        _posx1 = new float[1024];
+        _posy1 = new float[1024];
+        _posx2 = new float[1024];
+        _posy2 = new float[1024];
         //_direction = new int[1024];
         //_SorE = new int[1024];
         LoadCSV();
@@ -79,7 +83,7 @@ public class GameController : MonoBehaviour
               
                     GameObject.Find("Comment").GetComponent<Text>().text = "Great";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-                    Instantiate(great, new Vector3(_posx[_begin],_posy[_begin],0),Quaternion.identity);
+                    Instantiate(great, new Vector3(_posx1[_begin],_posy1[_begin],0),Quaternion.identity);
 
                     Great++ ;
 
@@ -91,7 +95,7 @@ public class GameController : MonoBehaviour
 
                     GameObject.Find("Comment").GetComponent<Text>().text = "Good";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-                    Instantiate(good, new Vector3(_posx[_begin], _posy[_begin], 0), Quaternion.identity);
+                    Instantiate(good, new Vector3(_posx1[_begin], _posy1[_begin], 0), Quaternion.identity);
 
                     Good++;
 
@@ -102,7 +106,7 @@ public class GameController : MonoBehaviour
 
                     GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-                    Instantiate(bad, new Vector3(_posx[_begin], _posy[_begin], 0), Quaternion.identity);
+                    Instantiate(bad, new Vector3(_posx1[_begin], _posy1[_begin], 0), Quaternion.identity);
 
                     Bad++;
 
@@ -210,7 +214,7 @@ public class GameController : MonoBehaviour
 
     void SpawnDummy(int num,int i)
     {
-        Instantiate(notes[i], new Vector3(_posx[num], _posy[num], 0), Quaternion.identity);
+        Instantiate(notes[i], new Vector3(_posx1[num], _posy1[num], 0), Quaternion.identity);
     }
 
     void LoadCSV()
@@ -227,10 +231,10 @@ public class GameController : MonoBehaviour
             {
                 _start[i] = float.Parse(values[0]);
                 _end[i] = float.Parse(values[1]);
-                _posx[i] = float.Parse(values[2]);
-                _posy[i] = float.Parse(values[3]);
-                //_direction[i] = int.Parse(values[3]);
-                //_SorE[i] = int.Parse(values[4]);
+                _posx1[i] = float.Parse(values[2]);
+                _posy2[i] = float.Parse(values[3]);
+                _posx2[i] = int.Parse(values[3]);
+                _posy2[i] = int.Parse(values[4]);
                 //_dummytiming[i] = _start[i] - 1.0f;
 
                 _span[i] = _end[i] - _start[i];

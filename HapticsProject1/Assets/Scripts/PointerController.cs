@@ -39,8 +39,8 @@ public class PointerController : MonoBehaviour
         gameController = GameObject.Find("GameController");
         notesData = gameController.GetComponent<GameController>();
         //num = notesData._dummyCount;
-        posx = notesData._posx;
-        posy = notesData._posy;
+        posx = notesData._posx1;
+        posy = notesData._posy1;
         start = notesData._start;
         end = notesData._end;
 
