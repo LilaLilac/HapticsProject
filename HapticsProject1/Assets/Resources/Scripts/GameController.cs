@@ -73,8 +73,9 @@ public class GameController : MonoBehaviour
             CheckNextNotes();
             //scoreText.text = _score.ToString();
 
+            Debug.Log(serialcontroller.ReadData());
+            if (/*Input.GetKeyDown("space")*/serialcontroller.ReadData()== "1" )//押し始め判定
 
-            if (Input.GetKeyDown("space")/*serialcontroller.ReadData()== "1" */)//押し始め判定
 
             
             {
@@ -118,7 +119,7 @@ public class GameController : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown("space")/*serialcontroller.ReadData()=="1"*/)
+            if (/*Input.GetKeyDown("space")*/serialcontroller.ReadData()=="1")
 
             
 

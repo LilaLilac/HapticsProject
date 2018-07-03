@@ -136,7 +136,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 44998405}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 501bb0b112f31e148a73d60445137c13, type: 3}
   m_Name: 
@@ -182,23 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c303643f5dfb884a88622f632622d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notes: []
-  _start: []
-  _end: []
-  _span: []
-  _posx: []
-  _posy: []
-  filePass: CSV/TestMusic
-  _notesCount: 0
-  _dummyCount: 0
-  timeOffset: -1
-  startButton: {fileID: 1170727189}
-  score: 0
-  great: {fileID: 1153108099336874, guid: 358c246e0ab06d94fbc58613c1d4684e, type: 2}
-  good: {fileID: 1470819992266584, guid: 63e4128e8ca6a86469c47ff1c3da6c14, type: 2}
-  bad: {fileID: 1150174290167236, guid: 62fff118d75c7bf498d140c5f8eca7f4, type: 2}
-  serialHandler: {fileID: 1175968252}
-  signal: 
 --- !u!1001 &511844488
 Prefab:
   m_ObjectHideFlags: 0
@@ -725,13 +708,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1175968249}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe93cbec65c2d2d44bbcdb4aa822cfe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portName: COM7
-  baurate: 2400
+  baurate: 4800
 --- !u!4 &1175968251
 Transform:
   m_ObjectHideFlags: 0
@@ -758,6 +741,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portName: COM7
   baudRate: 2400
+  isRunning_: 0
+  message_: 
+  isNewMessageReceived_: 0
 --- !u!1 &1462779851
 GameObject:
   m_ObjectHideFlags: 0

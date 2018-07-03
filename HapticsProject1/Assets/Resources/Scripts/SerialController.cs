@@ -46,7 +46,7 @@ public class SerialController : MonoBehaviour
     }
 
 
-    /*public string ReadData()
+
 
     public string ReadData()
 
@@ -59,15 +59,15 @@ public class SerialController : MonoBehaviour
         return "0";
     }
 
-    */
-    public void ReadData()
+    
+    /*public void ReadData()
     {
         while (this.isLoop)
         {
             string message = this.serial.ReadLine();
             Debug.Log(message);
         }
-    }
+    }*/
 
 
     void OnDestroy()
