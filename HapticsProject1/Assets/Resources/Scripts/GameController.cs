@@ -73,7 +73,10 @@ public class GameController : MonoBehaviour
             CheckNextNotes();
             //scoreText.text = _score.ToString();
 
+
             if (Input.GetKeyDown("space")/*serialcontroller.ReadData()== "1" */)//押し始め判定
+
+            
             {
                 if (GetMusicTime() - _start[_begin]>=-0.1f && GetMusicTime() - _start[_begin]<= 0.1f)
                 {
@@ -114,7 +117,11 @@ public class GameController : MonoBehaviour
                 _isHold = true;
             }
 
+
             if (Input.GetKeyDown("space")/*serialcontroller.ReadData()=="1"*/)
+
+            
+
             {
                 if (_isHold)
                 {

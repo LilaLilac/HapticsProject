@@ -32,7 +32,7 @@ public class SerialController : MonoBehaviour
             Debug.Log("can not open serial port");
         }
     }
-   
+
     public void Write(string message)
     {
         try
@@ -45,7 +45,11 @@ public class SerialController : MonoBehaviour
         }
     }
 
+
     /*public string ReadData()
+
+    public string ReadData()
+
     {
         while (this.isLoop)
         {
@@ -54,6 +58,7 @@ public class SerialController : MonoBehaviour
         }
         return "0";
     }
+
     */
     public void ReadData()
     {
@@ -63,6 +68,7 @@ public class SerialController : MonoBehaviour
             Debug.Log(message);
         }
     }
+
 
     void OnDestroy()
     {

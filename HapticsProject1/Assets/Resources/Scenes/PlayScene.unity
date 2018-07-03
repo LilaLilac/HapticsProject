@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 44998407}
   - component: {fileID: 44998406}
+  - component: {fileID: 44998408}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 44998405}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 501bb0b112f31e148a73d60445137c13, type: 3}
   m_Name: 
@@ -170,6 +171,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &44998408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 44998405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c303643f5dfb884a88622f632622d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notes: []
+  _start: []
+  _end: []
+  _span: []
+  _posx: []
+  _posy: []
+  filePass: CSV/TestMusic
+  _notesCount: 0
+  _dummyCount: 0
+  timeOffset: -1
+  startButton: {fileID: 1170727189}
+  score: 0
+  great: {fileID: 1153108099336874, guid: 358c246e0ab06d94fbc58613c1d4684e, type: 2}
+  good: {fileID: 1470819992266584, guid: 63e4128e8ca6a86469c47ff1c3da6c14, type: 2}
+  bad: {fileID: 1150174290167236, guid: 62fff118d75c7bf498d140c5f8eca7f4, type: 2}
+  serialHandler: {fileID: 1175968252}
+  signal: 
 --- !u!1001 &511844488
 Prefab:
   m_ObjectHideFlags: 0
@@ -390,6 +419,11 @@ Prefab:
         type: 2}
       propertyPath: portName
       value: COM7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114540439274991274, guid: 1cde70ef189649b4f80452a062920736,
+        type: 2}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114355094960965906, guid: 1cde70ef189649b4f80452a062920736, type: 2}
@@ -677,6 +711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1175968251}
   - component: {fileID: 1175968250}
+  - component: {fileID: 1175968252}
   m_Layer: 0
   m_Name: SerialController
   m_TagString: Untagged
@@ -690,7 +725,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1175968249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe93cbec65c2d2d44bbcdb4aa822cfe9, type: 3}
   m_Name: 
@@ -710,6 +745,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1175968252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1175968249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba5f32ed20dc2d469f44000cd894223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM7
+  baudRate: 2400
 --- !u!1 &1462779851
 GameObject:
   m_ObjectHideFlags: 0
