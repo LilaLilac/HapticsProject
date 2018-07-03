@@ -1,18 +1,14 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
-public class ScoreControllerMk2 : MonoBehaviour
+public class ScoreController : MonoBehaviour
 {
-    //SerialController serialcontroller;
-    //GameObject serial;
-    //string signal;//シリアル通信から受け取った値を格納する
-    //private bool signal; //シリアル通信とつなぐ前のテスト用
-
-    GameController director;
-    GameObject gamecontroller;
+    SerialController serialcontroller;
+    GameObject serial;
+    string signal;//シリアル通信から受け取った値を格納する
 
     public float score = 0f;
     public float now = 0f;
@@ -27,17 +23,10 @@ public class ScoreControllerMk2 : MonoBehaviour
     public int _notesCount = 0;
     public string filePass; //ここに読み込む譜面を入れる
 
-    private bool _isPlaying = false;
-    public GameObject startButton;
-
     void Start()
     {
-        /*serial = GameObject.Find("SerialController");
-        serialcontroller = serial.GetComponent<SerialController>();*/
-
-        gamecontroller = GameObject.Find("GameController");
-        director = gamecontroller.GetComponent<GameController>();
-
+        serial = GameObject.Find("SerialController");
+        serialcontroller = serial.GetComponent<SerialController>();
         _start = new float[1024];
         _end = new float[1024];
         LoadCSV();
@@ -45,52 +34,44 @@ public class ScoreControllerMk2 : MonoBehaviour
 
     void Update()
     {
-        if (_isPlaying)
+        signal = serialcontroller.ReadData();//1か0の文字列
+        now += Time.deltaTime;//現在の時刻取得
+        GameObject.Find("Timer").GetComponent<Text>().text = now.ToString("F2"); //時刻ひょうじ
+        //Debug.Log(now);
+        //Debug.Log(_notesCount);
+        if (now >= _start[_notesCount] && now <= _end[_notesCount])
         {
-            //signal = serialcontroller.ReadData();//メッセージの表示
-            //now += Time.deltaTime;//現在の時刻取得
-            now = director.GetMusicTime();
-            GameObject.Find("Timer").GetComponent<Text>().text = now.ToString("F2"); //時刻ひょうじ
-                                                                                     //Debug.Log(now);
-                                                                                     //Debug.Log(_notesCount);
-            if (now >= _start[_notesCount] && now <= _end[_notesCount])
-            {
-                ScoreI();
-            }
-            else
-                ScoreD();
+            ScoreI();
 
-            if (GameObject.Find("Comment").GetComponent<Text>().text == "Good")
-            {
-                float px = Random.Range(-6.0f, 6.0f);
-                float py = Random.Range(-6.0f, 6.0f);
-                //azisai = Instantiate(flower, new Vector3(px, py, 0), Quaternion.identity) as GameObject;//Goodでゲームオブジェクトフェードイン
-            }
-            if (now > _end[_notesCount])
-            {
-                _notesCount += 1;
-                Debug.Log("ScoreTime= "+now);
-                Debug.Log("ScoreNote= "+_notesCount);
-            }
         }
-    }
+        else
+            ScoreD();
+        if (GameObject.Find("Comment").GetComponent<Text>().text == "Good")
+        {
+            float px = Random.Range(-6.0f,6.0f);
+            float py = Random.Range(-6.0f,6.0f);
+            azisai = Instantiate(flower, new Vector3(px,py,0), Quaternion.identity) as GameObject;//Goodでゲームオブジェクトフェードイン
+        }
+        if(now > _end[_notesCount])
+        {
+            _notesCount += 1;
+           
 
-    public void StartGame()
-    {
-        startButton.SetActive(false);
-        _isPlaying = true;
+        }
+        
     }
 
 
     void ScoreI()//入力すべきタイミングでの判定と点数表示
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (signal == "1")
         {
             score += 0.05f;
 
             GameObject.Find("Comment").GetComponent<Text>().text = "Good";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-            
+            serialcontroller.Write("0");
+
 
         }
         else
@@ -100,29 +81,32 @@ public class ScoreControllerMk2 : MonoBehaviour
                 score -= 0.05f;
                 GameObject.Find("Comment").GetComponent<Text>().text = "Miss";
                 GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-
+                serialcontroller.Write("1");
             }
             else
             {
                 GameObject.Find("Comment").GetComponent<Text>().text = "Miss";
                 GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+                serialcontroller.Write("1");
             }
             
         }
     }
     void ScoreD()//入力してはならない時の判定と点数表示
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (signal == "1")
         {
 
-            //GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
+            GameObject.Find("Comment").GetComponent<Text>().text = "Miss";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+            serialcontroller.Write("1");
 
         }
         else
         {
             GameObject.Find("Comment").GetComponent<Text>().text = "";
             GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
+            serialcontroller.Write("0");
 
         }
         
@@ -149,4 +133,4 @@ public class ScoreControllerMk2 : MonoBehaviour
     }
     
 }
-
+*/

@@ -8,8 +8,8 @@ public class SerialHandler : MonoBehaviour
     public delegate void SerialDataReceivedEventHandler(string message);
     public event SerialDataReceivedEventHandler OnDataReceived;
 
-    public string portName = "/dev/tty.usbmodem1421"; // ポート名(Macだと/dev/tty.usbmodem1421など)
-    public int baudRate = 9600;  // ボーレート(Arduinoに記述したものに合わせる)
+    public string portName = "/dev/tty.usbmodem1421";
+    public int baudRate = 9600;
 
     private SerialPort serialPort_;
     private Thread thread_;
@@ -29,7 +29,6 @@ public class SerialHandler : MonoBehaviour
         {
             OnDataReceived(message_);
         }
-        isNewMessageReceived_ = false;
     }
 
     void OnDestroy()
@@ -40,8 +39,6 @@ public class SerialHandler : MonoBehaviour
     private void Open()
     {
         serialPort_ = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);
-        //または
-        //serialPort_ = new SerialPort(portName, baudRate);
         serialPort_.Open();
 
         isRunning_ = true;
@@ -52,7 +49,6 @@ public class SerialHandler : MonoBehaviour
 
     private void Close()
     {
-        isNewMessageReceived_ = false;
         isRunning_ = false;
 
         if (thread_ != null && thread_.IsAlive)
@@ -73,8 +69,11 @@ public class SerialHandler : MonoBehaviour
         {
             try
             {
-                message_ = serialPort_.ReadLine();
-                isNewMessageReceived_ = true;
+                if (serialPort_.BytesToRead > 0)
+                {
+                    message_ = serialPort_.ReadLine();
+                    isNewMessageReceived_ = true;
+                }
             }
             catch (System.Exception e)
             {
@@ -88,7 +87,6 @@ public class SerialHandler : MonoBehaviour
         try
         {
             serialPort_.Write(message);
-            Debug.Log(message);
         }
         catch (System.Exception e)
         {

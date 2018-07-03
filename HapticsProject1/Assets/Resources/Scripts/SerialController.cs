@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿
+   
+
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System;
@@ -29,17 +32,7 @@ public class SerialController : MonoBehaviour
             Debug.Log("can not open serial port");
         }
     }
-
-    public string ReadData()
-    {
-        string message = "0";
-        while (this.isLoop)
-        {
-            message = this.serial.ReadLine();
-            return message;
-        }
-        return message;
-    }
+   
     public void Write(string message)
     {
         try
@@ -49,6 +42,25 @@ public class SerialController : MonoBehaviour
         catch (System.Exception e)
         {
             Debug.LogWarning(e.Message);
+        }
+    }
+
+    /*public string ReadData()
+    {
+        while (this.isLoop)
+        {
+            string message = this.serial.ReadLine();
+            return message;
+        }
+        return "0";
+    }
+    */
+    public void ReadData()
+    {
+        while (this.isLoop)
+        {
+            string message = this.serial.ReadLine();
+            Debug.Log(message);
         }
     }
 
