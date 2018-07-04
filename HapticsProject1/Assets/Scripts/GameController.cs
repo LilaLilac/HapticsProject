@@ -75,7 +75,9 @@ public class GameController : MonoBehaviour
         {
             GameObject.Find("Timer").GetComponent<Text>().text = GetMusicTime().ToString("F2");
             CheckNextNotes();
-      
+
+            Debug.Log(serialcontroller.ReadData());
+
             if (serialcontroller.ReadData() == "1")　//押し始め判定
             {
                 if (GetMusicTime() - _start[_begin]>=-0.1f && GetMusicTime() - _start[_begin]<= 0.1f)

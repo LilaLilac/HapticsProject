@@ -2476,7 +2476,12 @@ Prefab:
     - target: {fileID: 114882638782395564, guid: 392ccf8e864c0184986a9d9dd52523e5,
         type: 2}
       propertyPath: portName
-      value: COM7
+      value: COM8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114882638782395564, guid: 392ccf8e864c0184986a9d9dd52523e5,
+        type: 2}
+      propertyPath: baurate
+      value: 9600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 392ccf8e864c0184986a9d9dd52523e5, type: 2}
@@ -9426,7 +9431,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e2d3ad37634c25f47943b2b79047d239, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f930dc746b93a9a42b51cb099f449854, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
