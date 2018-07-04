@@ -65,8 +65,8 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        
-       
+
+
         if (_isPlaying)
         {
             GameObject.Find("Timer").GetComponent<Text>().text = GetMusicTime().ToString("F2");
@@ -74,18 +74,18 @@ public class GameController : MonoBehaviour
             //scoreText.text = _score.ToString();
 
             Debug.Log(serialcontroller.ReadData());
-            if (/*Input.GetKeyDown("space")*/serialcontroller.ReadData()== "1" )//押し始め判定
+            if (/*Input.GetKeyDown("space")*/serialcontroller.ReadData() == "1")//押し始め判定
 
 
-            
+
             {
-                if (GetMusicTime() - _start[_begin]>=-0.1f && GetMusicTime() - _start[_begin]<= 0.1f)
+                if (GetMusicTime() - _start[_begin] >= -0.1f && GetMusicTime() - _start[_begin] <= 0.1f)
                 {
                     score += 100f;
-              
+
                     GameObject.Find("Comment").GetComponent<Text>().text = "Great";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-                    Instantiate(great, new Vector3(_posx[_begin],_posy[_begin],0),Quaternion.identity);
+                    Instantiate(great, new Vector3(_posx[_begin], _posy[_begin], 0), Quaternion.identity);
                     serialcontroller.Write("0");
 
                     _begin++;
@@ -113,15 +113,16 @@ public class GameController : MonoBehaviour
                 }
                 else
                 {
-                    
+
                 }
+
                 _isHold = true;
             }
 
 
-            if (/*Input.GetKeyDown("space")*/serialcontroller.ReadData()=="1")
+            if (/*Input.GetKeyDown("space")*/serialcontroller.ReadData() == "1")
 
-            
+
 
             {
                 if (_isHold)
@@ -157,14 +158,20 @@ public class GameController : MonoBehaviour
                     {
 
                     }
+
                     _isHold = false;
                 }
             }
-            
-        }
-         //scoreText.text = _score.ToString();
-    }
 
+
+            else
+            {
+                serialcontroller.Write("0");
+            }
+
+            //scoreText.text = _score.ToString();
+        }
+    }
     public void StartGame()
     {
        
