@@ -24,7 +24,7 @@ public class guideNote2 : MonoBehaviour {
 	void Update () {
         remain -= Time.deltaTime;
         alfa = remain / span;
-        sprite.material.color = new Color(1, 0.3f,0.3f, 1-alfa);
+        
         gameObject.transform.localScale = new Vector3(alfa*0.5f,alfa*0.5f,0);
         if (remain < 0)
         {

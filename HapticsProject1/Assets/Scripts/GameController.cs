@@ -6,8 +6,11 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    SerialController serialcontroller;
+    GameObject serial;
+
     public GameObject[] notes;
-    //public GameObject pointer;
+    
     public float[] _start;
     public float[] _end;
     public float[] _span;
@@ -15,9 +18,7 @@ public class GameController : MonoBehaviour
     public float[] _posy1;
     public float[] _posx2;
     public float[] _posy2;
-    //public int[] _direction; //なぞる向き
-    //public int[] _SorE; //ノーツの始点あるいは終点
-    //private float[] _dummytiming;
+    
 
     public string filePass;
     public int _notesCount = 0; //ノーツ生成用
@@ -45,13 +46,16 @@ public class GameController : MonoBehaviour
     public int Great=0;
     public int Good=0;
     public int Bad=0;
-    //public static int[] finalResult;
 
     public float waitTime; 
 
     void Start()
     {
+        serial = GameObject.Find("SerialController");
+        serialcontroller = serial.GetComponent<SerialController>();
+
         _audioSource = GameObject.Find("GameMusic").GetComponent<AudioSource>();
+
         _start = new float[1024];
         _end = new float[1024];
         _span = new float[1024];
@@ -59,13 +63,9 @@ public class GameController : MonoBehaviour
         _posy1 = new float[1024];
         _posx2 = new float[1024];
         _posy2 = new float[1024];
-        //_direction = new int[1024];
-        //_SorE = new int[1024];
+       
         LoadCSV();
         _startTime = Time.time;
-        //_dummytiming = new float[1024];
-
-        //Result = new int[5]; //great,good,bad,notes
         
     }
 
@@ -75,9 +75,8 @@ public class GameController : MonoBehaviour
         {
             GameObject.Find("Timer").GetComponent<Text>().text = GetMusicTime().ToString("F2");
             CheckNextNotes();
-            //scoreText.text = _score.ToString();
-
-            if (Input.GetKeyDown(KeyCode.Space))　//押し始め判定
+      
+            if (serialcontroller.ReadData() == "1")　//押し始め判定
             {
                 if (GetMusicTime() - _start[_begin]>=-0.1f && GetMusicTime() - _start[_begin]<= 0.1f)
                 {
@@ -86,7 +85,7 @@ public class GameController : MonoBehaviour
                     GameObject.Find("Comment").GetComponent<Text>().text = "Great";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                     Instantiate(great, new Vector3(_posx1[_begin],_posy1[_begin],0),Quaternion.identity);
-
+                    serialcontroller.Write("0");
                     Great++ ;
 
                     _begin++;
@@ -98,7 +97,7 @@ public class GameController : MonoBehaviour
                     GameObject.Find("Comment").GetComponent<Text>().text = "Good";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                     Instantiate(good, new Vector3(_posx1[_begin], _posy1[_begin], 0), Quaternion.identity);
-
+                    serialcontroller.Write("0");
                     Good++;
 
                     _begin++;
@@ -109,7 +108,7 @@ public class GameController : MonoBehaviour
                     GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                     Instantiate(bad, new Vector3(_posx1[_begin], _posy1[_begin], 0), Quaternion.identity);
-
+                    serialcontroller.Write("1");
                     Bad++;
 
                     _begin++;
@@ -121,7 +120,7 @@ public class GameController : MonoBehaviour
                 _isHold = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (serialcontroller.ReadData() == "1")
             {
                 if (_isHold)
                 {
@@ -132,7 +131,7 @@ public class GameController : MonoBehaviour
                         GameObject.Find("Comment").GetComponent<Text>().text = "Great";
                         GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
                         //パスの終わりにエフェクトを入れたい　保持リストを作っていないので別途読み込み
-
+                        serialcontroller.Write("0");
                         Great++;
 
                         _release++;
@@ -143,7 +142,7 @@ public class GameController : MonoBehaviour
 
                         GameObject.Find("Comment").GetComponent<Text>().text = "Good";
                         GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-
+                        serialcontroller.Write("0");
                         Good ++ ;
 
                         _release++;
@@ -153,7 +152,7 @@ public class GameController : MonoBehaviour
 
                         GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                         GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
-
+                        serialcontroller.Write("1");
                         Bad++;
 
                         _release++;
@@ -182,31 +181,20 @@ public class GameController : MonoBehaviour
 
         _audioSource.Play();
         _isPlaying = true;
-        //Instantiate(pointer);
+      
     }
 
     void CheckNextNotes()
     {
         while (_start[_dummyCount] + timeOffset-2.0f< GetMusicTime() && _start[_dummyCount] >= 0)
         {
-            /*if (_begin != _dummyCount&&_dummyCount!=0) //正しくカウントが進んでない（ミスした後）の調整　後日修正
-            {
-                _begin = _dummyCount;
-            }*/
             SpawnDummy(_dummyCount,0);
             SpawnDummy(_dummyCount, 1);
             _dummyCount++;
-
         }
          while (_end[_notesCount]+timeOffset - 2.0f < GetMusicTime() && _end[_notesCount] >= 0)
         {
-
-            /*if (_release!= _notesCount&&_notesCount!=0)
-            //{
-                _release = _notesCount;
-            }*/
             SpawnNotes(_notesCount,2);
-            //Debug.Log("MusicTime = "+GetMusicTime());
             _notesCount++;
 
         }

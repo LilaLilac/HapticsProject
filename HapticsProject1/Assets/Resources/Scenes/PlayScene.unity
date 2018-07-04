@@ -2473,6 +2473,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114882638782395564, guid: 392ccf8e864c0184986a9d9dd52523e5,
+        type: 2}
+      propertyPath: portName
+      value: COM7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 392ccf8e864c0184986a9d9dd52523e5, type: 2}
   m_IsPrefabParent: 0

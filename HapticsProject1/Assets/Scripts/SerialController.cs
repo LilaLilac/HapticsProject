@@ -30,16 +30,6 @@ public class SerialController : MonoBehaviour
         }
     }
 
-    public string ReadData()
-    {
-        string message = "0";
-        while (this.isLoop)
-        {
-            message = this.serial.ReadLine();
-            return message;
-        }
-        return message;
-    }
     public void Write(string message)
     {
         try
@@ -51,6 +41,31 @@ public class SerialController : MonoBehaviour
             Debug.LogWarning(e.Message);
         }
     }
+
+
+
+
+    public string ReadData()
+
+    {
+        while (this.isLoop)
+        {
+            string message = this.serial.ReadLine();
+            return message;
+        }
+        return "0";
+    }
+
+
+    /*public void ReadData()
+    {
+        while (this.isLoop)
+        {
+            string message = this.serial.ReadLine();
+            Debug.Log(message);
+        }
+    }*/
+
 
     void OnDestroy()
     {
