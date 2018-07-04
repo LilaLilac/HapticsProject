@@ -47,6 +47,8 @@ public class GameController : MonoBehaviour
     public int Bad=0;
     //public static int[] finalResult;
 
+    public float waitTime; 
+
     void Start()
     {
         _audioSource = GameObject.Find("GameMusic").GetComponent<AudioSource>();
@@ -170,8 +172,14 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        waitTime = 0;
         startButton.SetActive(false);
         _startTime = Time.time;
+        while (waitTime < 3.0f)
+        {
+            waitTime += Time.deltaTime;
+        }
+
         _audioSource.Play();
         _isPlaying = true;
         //Instantiate(pointer);
@@ -179,37 +187,33 @@ public class GameController : MonoBehaviour
 
     void CheckNextNotes()
     {
-        while (_start[_dummyCount] + timeOffset-2.0f< GetMusicTime() && _start[_dummyCount] != 0)
+        while (_start[_dummyCount] + timeOffset-2.0f< GetMusicTime() && _start[_dummyCount] >= 0)
         {
             /*if (_begin != _dummyCount&&_dummyCount!=0) //正しくカウントが進んでない（ミスした後）の調整　後日修正
             {
                 _begin = _dummyCount;
             }*/
             SpawnDummy(_dummyCount,0);
-            //Debug.Log("MusicTime = " + GetMusicTime());
+            SpawnDummy(_dummyCount, 1);
             _dummyCount++;
+
         }
-        while (_start[_notesCount] < GetMusicTime() && _start[_notesCount] != 0)
+         while (_end[_notesCount]+timeOffset - 2.0f < GetMusicTime() && _end[_notesCount] >= 0)
         {
 
             /*if (_release!= _notesCount&&_notesCount!=0)
-            {
+            //{
                 _release = _notesCount;
             }*/
-            SpawnDummy(_notesCount,1);
+            SpawnNotes(_notesCount,2);
             //Debug.Log("MusicTime = "+GetMusicTime());
             _notesCount++;
 
         }
     }
-    void SpawnNotes(int num)
+    void SpawnNotes(int num,int i)
     {
-        int i;
-        Vector3[] spawn= new Vector3[]{new Vector3(-10, 8, 0), new Vector3(-10, -8, 0), new Vector3(10, 8, 0), new Vector3(10, -8, 0) };
-        i = num % 4;
-        Instantiate(notes[num],
-            spawn[i],
-            Quaternion.identity);
+        Instantiate(notes[i], new Vector3(_posx2[num], _posy2[num], 0), Quaternion.identity);
     }
 
     void SpawnDummy(int num,int i)
@@ -232,9 +236,9 @@ public class GameController : MonoBehaviour
                 _start[i] = float.Parse(values[0]);
                 _end[i] = float.Parse(values[1]);
                 _posx1[i] = float.Parse(values[2]);
-                _posy2[i] = float.Parse(values[3]);
-                _posx2[i] = int.Parse(values[3]);
-                _posy2[i] = int.Parse(values[4]);
+                _posy1[i] = float.Parse(values[3]);
+                _posx2[i] = float.Parse(values[4]);
+                _posy2[i] = float.Parse(values[5]);
                 //_dummytiming[i] = _start[i] - 1.0f;
 
                 _span[i] = _end[i] - _start[i];
@@ -244,7 +248,7 @@ public class GameController : MonoBehaviour
     }
     public float GetMusicTime()
     {
-        return Time.time - _startTime;
+        return Time.time - _startTime-waitTime;
     }
 
     

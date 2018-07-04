@@ -78,10 +78,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2
+  m_Time: 200
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.5
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -144,7 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21833c79fa13aa54595f26dabdae8962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 2
 --- !u!212 &212256057713936322
 SpriteRenderer:
   m_ObjectHideFlags: 1

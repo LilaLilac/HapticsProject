@@ -8,7 +8,7 @@ public class NotesController : MonoBehaviour {
     float posisionx;
     float posisiony;
     int noteCount=0;
-    int direction;
+    
     Vector3 endposision;
     /*Vector3[] slidepos=new Vector3[] {
         new Vector3(1,1,0), //右上
@@ -18,14 +18,12 @@ public class NotesController : MonoBehaviour {
     };*/
     //public float speed = 0;
 
-    public float fadeTime = 2.0f;
-
-    private float currentRemainTime;
+    
 
 
     // Use this for initialization
     void Start () {
-        currentRemainTime = fadeTime;
+      
 
         gameController = GameObject.Find("GameController");
         notesData = gameController.GetComponent<GameController>();
@@ -36,29 +34,13 @@ public class NotesController : MonoBehaviour {
        
         endposision = new Vector3(posisionx, posisiony, 0);
 
-        //Debug.Log("direction "+direction);
-        //Debug.Log("notesCount with Notes "+noteCount);
-        //speed*= 0.1f;
-        //this.transform.Translate(-this.speed, 0, 0);
-        //iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision, "time", 2.0f, "easeType", "linear","delay", 1.0f));
-
-        //iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision+slidepos[direction], "time", 0.5f, "easeType", "linear"));
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        sprite.material.color = new Color(1, 1, 1,0);
     }
 
     // Update is called once per frame
     void Update () {
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        currentRemainTime -= Time.deltaTime;
-        if (currentRemainTime > 0)
-        {
-            float newAlpha = 1 - currentRemainTime / fadeTime;
-            sprite.material.color = new Color(1, 1, 1, newAlpha);
-        }
-
-        /*if (currentRemainTime < 0)
-        {
-            iTween.MoveTo(this.gameObject, iTween.Hash("position", endposision + slidepos[direction], "time", 2.0f, "easeType", "linear", "delay", 1.0f));
-        }*/
+   
     }
     
 
