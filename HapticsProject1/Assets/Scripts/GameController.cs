@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     public string filePass;
     public int _notesCount = 0; //ノーツ生成用
     public int _dummyCount = 0; //ガイド用ライン生成用
+    public int _mainCount = 0;//スライドライン生成用（時間と完全同期）
 
     private int _begin = 0; //押し始め判定
     private int _release = 0; //離すタイミング判定
@@ -31,7 +32,7 @@ public class GameController : MonoBehaviour
     private float _startTime = 0;
 
 
-    public float timeOffset = -1;
+    public float timeOffset = -3;
 
     private bool _isPlaying = false;
     public GameObject startButton;
@@ -176,25 +177,32 @@ public class GameController : MonoBehaviour
         waitTime = 0;
         startButton.SetActive(false);
         _startTime = Time.time;
-        while (waitTime < 3.0f)
-        {
-            waitTime += Time.deltaTime;
-        }
+        //while (waitTime < 3.0f)
+        //{
+          //  waitTime += Time.deltaTime;
+        //}
 
         _audioSource.Play();
+        
         _isPlaying = true;
       
     }
 
     void CheckNextNotes()
     {
-        while (_start[_dummyCount] + timeOffset-2.0f< GetMusicTime() && _start[_dummyCount] >= 0)
+        while (_start[_dummyCount] + timeOffset< GetMusicTime() && _start[_dummyCount] >= 0)
         {
-            SpawnDummy(_dummyCount,0);
+            
             SpawnDummy(_dummyCount, 1);
             _dummyCount++;
         }
-         while (_end[_notesCount]+timeOffset - 2.0f < GetMusicTime() && _end[_notesCount] >= 0)
+        while (_start[_mainCount] +timeOffset < GetMusicTime() && _start[_mainCount] >= 0)
+        {
+            SpawnDummy(_mainCount, 0);
+            _mainCount++;
+
+        }
+        while (_end[_notesCount]+timeOffset < GetMusicTime() && _end[_notesCount] >= 0)
         {
             SpawnNotes(_notesCount,2);
             _notesCount++;
@@ -238,7 +246,8 @@ public class GameController : MonoBehaviour
     }
     public float GetMusicTime()
     {
-        return Time.time - _startTime-waitTime;
+        //return Time.time - _startTime-waitTime;
+        return Time.time - _startTime ;
     }
 
     

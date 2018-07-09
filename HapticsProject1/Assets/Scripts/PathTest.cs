@@ -21,9 +21,12 @@ public class PathTest : MonoBehaviour
     {
         currentRemainTime = fadeTime;
 
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        sprite.material.color = new Color(1, 1, 1, 0);
+
         gameController = GameObject.Find("GameController");
         notesData = gameController.GetComponent<GameController>();
-        num = notesData._notesCount-1;
+        num = notesData._mainCount-1;
         time = notesData._span[num];
 
         Paths = "Path "+num;
@@ -51,13 +54,13 @@ public class PathTest : MonoBehaviour
             GetComponent<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }*/
 
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        //SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         currentRemainTime -= Time.deltaTime;
-        if (currentRemainTime > 0)
-        {
-            float newAlpha = currentRemainTime / fadeTime;
-            sprite.material.color = new Color(1, 1, 1, newAlpha);
-        }
+        //if (currentRemainTime > 0)
+        //{
+            //float newAlpha = currentRemainTime / fadeTime;
+            //sprite.material.color = new Color(1, 1, 1, newAlpha);
+        //}
 
         if (currentRemainTime < 0)
         {
