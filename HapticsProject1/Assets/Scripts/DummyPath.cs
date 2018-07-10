@@ -30,7 +30,7 @@ public class DummyPath : MonoBehaviour
         sprite.material.color = new Color(1, 1, 1, 0);
 
         Paths = "Path "+num;
-        Debug.Log("span " + num + " = " + span);
+        //Debug.Log("span " + num + " = " + span);
         iTween.MoveTo(this.gameObject, iTween.Hash(
             "path", iTweenPath.GetPath(Paths),
             "time", span,

@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
 
             if (serialcontroller.ReadData() == "1")　//押し始め判定
             {
-                if (GetMusicTime() - _start[_begin]>=-0.1f && GetMusicTime() - _start[_begin]<= 0.1f)
+                if (GetMusicTime() - _start[_begin]>=-0.4f && GetMusicTime() - _start[_begin]<= 0.4f)
                 {
                     score += 100f;
               
@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
 
                     _begin++;
                 }
-                else if (GetMusicTime() - _start[_begin] >= -0.15f && GetMusicTime() - _start[_begin] <= 0.15f)
+                else if (GetMusicTime() - _start[_begin] >= -0.3f && GetMusicTime() - _start[_begin] <= 0.3f)
                 {
                     score += 50f;
 
@@ -105,8 +105,9 @@ public class GameController : MonoBehaviour
 
                     _begin++;
                 }
-                else if (GetMusicTime() - _start[_begin] >= -0.6f && GetMusicTime() - _start[_begin] <= 0.6f)
+                else if (GetMusicTime() - _start[_begin] >= -0.9f && GetMusicTime() - _start[_begin] <= 0.9f)
                 {
+                    score += 10;
 
                     GameObject.Find("Comment").GetComponent<Text>().text = "Bad";
                     GameObject.Find("ScoreText").GetComponent<Text>().text = score.ToString("F0");
@@ -118,9 +119,10 @@ public class GameController : MonoBehaviour
                 }
                 else
                 {
-
+                    
                 }
                 _isHold = true;
+            
             }
 
             if (serialcontroller.ReadData() == "1")
@@ -162,7 +164,7 @@ public class GameController : MonoBehaviour
                     }
                     else
                     {
-
+                       
                     }
                     _isHold = false;
                 }

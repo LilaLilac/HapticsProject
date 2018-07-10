@@ -49,7 +49,7 @@ public class ScoreManager : MonoBehaviour {
         bad = finalscore.bad;
         miss = finalscore.totalnotes - (great + good + bad);
 
-        score = great * 100 + good * 50;
+        score = great * 100 + good * 50+bad*10;
 
         percent = score / finalscore.totalnotes;
 

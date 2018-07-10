@@ -182,8 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notes:
   - {fileID: 1680050766060742, guid: 5470f01910071bc4696fa01e256018ae, type: 2}
-  - {fileID: 1066924965619744, guid: 0b65f8ecaf7f6b4489e371b387ae7bfb, type: 2}
-  - {fileID: 1066924965619744, guid: 0b65f8ecaf7f6b4489e371b387ae7bfb, type: 2}
+  - {fileID: 1324162485416472, guid: c2f804be631403d43a09f7b5b1bc8c66, type: 2}
+  - {fileID: 1248993294492928, guid: 8fc6e205ebaaf4e4995468c6379534a6, type: 2}
   _start: []
   _end: []
   _span: []
@@ -2742,6 +2742,16 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114159588349623924, guid: 1cde70ef189649b4f80452a062920736,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.47007567
+      objectReference: {fileID: 0}
+    - target: {fileID: 114159588349623924, guid: 1cde70ef189649b4f80452a062920736,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.19607842
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114355094960965906, guid: 1cde70ef189649b4f80452a062920736, type: 2}
