@@ -20,7 +20,7 @@ public class DummyPath : MonoBehaviour
 
         gameController = GameObject.Find("GameController");
         notesData = gameController.GetComponent<GameController>();
-        num = notesData._dummyCount-1;
+        num = notesData._mainCount-1;
 
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         sprite.material.color = new Color(1, 1, 1, 0);

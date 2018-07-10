@@ -196,7 +196,7 @@ public class GameController : MonoBehaviour
             SpawnDummy(_dummyCount, 1);
             _dummyCount++;
         }
-        while (_start[_mainCount] +timeOffset < GetMusicTime() && _start[_mainCount] >= 0)
+        while (_start[_mainCount] < GetMusicTime() && _start[_mainCount] >= 0)
         {
             SpawnDummy(_mainCount, 0);
             _mainCount++;

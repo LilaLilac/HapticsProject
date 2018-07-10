@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes:
-  - {fileID: 1468654103095530, guid: 719619a85296632409374781a262dc88, type: 2}
+  - {fileID: 1680050766060742, guid: 5470f01910071bc4696fa01e256018ae, type: 2}
   - {fileID: 1066924965619744, guid: 0b65f8ecaf7f6b4489e371b387ae7bfb, type: 2}
   - {fileID: 1127081024013944, guid: 4fc3e51ba0f3fe14ba70fc5f69f3db64, type: 2}
   _start: []
@@ -191,7 +191,7 @@ MonoBehaviour:
   _posy1: []
   _posx2: []
   _posy2: []
-  filePass: CSV/TestCanon
+  filePass: CSV/Natsumatsri
   _notesCount: 0
   _dummyCount: 0
   _mainCount: 0

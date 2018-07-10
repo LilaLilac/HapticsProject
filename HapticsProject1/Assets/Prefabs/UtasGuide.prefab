@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4090393103851578}
+  - component: {fileID: 114459618321400952}
   - component: {fileID: 212941084056805140}
   - component: {fileID: 114904421829865510}
   - component: {fileID: 114558210990904526}
@@ -26,7 +27,6 @@ GameObject:
   - component: {fileID: 114543683002428450}
   - component: {fileID: 114224229043383870}
   - component: {fileID: 114797010691004104}
-  - component: {fileID: 114558412727414306}
   - component: {fileID: 114575838178849328}
   - component: {fileID: 114332312527565324}
   - component: {fileID: 114570276346727272}
@@ -90,7 +90,7 @@ TrailRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680050766060742}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -559,6 +559,19 @@ MonoBehaviour:
   initialized: 1
   initialName: New Path 1
   pathVisible: 1
+--- !u!114 &114459618321400952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680050766060742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d53bf8061c16274fa8a61e56f75f90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  PathName: New Path 1
 --- !u!114 &114463911863394794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -727,18 +740,6 @@ MonoBehaviour:
   initialized: 1
   initialName: New Path 1
   pathVisible: 1
---- !u!114 &114558412727414306
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1680050766060742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3684d5bd412dc408577807a3e539f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PathName: New Path 1
 --- !u!114 &114570276346727272
 MonoBehaviour:
   m_ObjectHideFlags: 1
