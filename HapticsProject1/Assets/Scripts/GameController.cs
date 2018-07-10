@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
     private float _startTime = 0;
 
 
-    public float timeOffset = -3;
+    public float timeOffset = -2f;
 
     private bool _isPlaying = false;
     public GameObject startButton;

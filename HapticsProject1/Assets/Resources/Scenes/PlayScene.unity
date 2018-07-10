@@ -183,7 +183,7 @@ MonoBehaviour:
   notes:
   - {fileID: 1680050766060742, guid: 5470f01910071bc4696fa01e256018ae, type: 2}
   - {fileID: 1066924965619744, guid: 0b65f8ecaf7f6b4489e371b387ae7bfb, type: 2}
-  - {fileID: 1127081024013944, guid: 4fc3e51ba0f3fe14ba70fc5f69f3db64, type: 2}
+  - {fileID: 1066924965619744, guid: 0b65f8ecaf7f6b4489e371b387ae7bfb, type: 2}
   _start: []
   _end: []
   _span: []
@@ -195,7 +195,7 @@ MonoBehaviour:
   _notesCount: 0
   _dummyCount: 0
   _mainCount: 0
-  timeOffset: -1
+  timeOffset: -2
   startButton: {fileID: 1170727189}
   score: 0
   great: {fileID: 1153108099336874, guid: 358c246e0ab06d94fbc58613c1d4684e, type: 2}
@@ -1079,12 +1079,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 248083786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76812553, y: -0.5878022, z: -9.894154}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.76812553, y: -0.58780193, z: -9.894154}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &248083788
 MonoBehaviour:
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   great: 0
   good: 0
   bad: 0
-  totalnotes: 100
+  totalnotes: 41
 --- !u!4 &250900204 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4779458318165144, guid: 3cfd59cc742afe14c81780012025204d,
@@ -3897,7 +3897,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &715066958
 Prefab:
@@ -9531,7 +9531,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f930dc746b93a9a42b51cb099f449854, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f1890cc3c39192244869438ad1d2e763, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

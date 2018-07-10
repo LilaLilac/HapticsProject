@@ -11,6 +11,8 @@ public class DummyPath : MonoBehaviour
     GameController notesData;
     GameObject gameController;
 
+    private float span;
+
     //public float fadeTime = 0.5f;
     //private float currentRemainTime;
 
@@ -22,14 +24,16 @@ public class DummyPath : MonoBehaviour
         notesData = gameController.GetComponent<GameController>();
         num = notesData._mainCount-1;
 
+        span = notesData._end[num] - notesData._start[num];
+
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         sprite.material.color = new Color(1, 1, 1, 0);
 
         Paths = "Path "+num;
-
+        Debug.Log("span " + num + " = " + span);
         iTween.MoveTo(this.gameObject, iTween.Hash(
             "path", iTweenPath.GetPath(Paths),
-            "time", time,
+            "time", span,
             "easeType", iTween.EaseType.linear,
             "orienttopath", false));
         

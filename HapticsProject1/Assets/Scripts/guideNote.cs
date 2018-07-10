@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class guideNote : MonoBehaviour {
 
-    float span=3.0f;
+    float span=2.0f;
 
     int noteCount = 0;
 
@@ -23,9 +23,9 @@ public class guideNote : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         remain -= Time.deltaTime;
-        //alfa = remain / span;
-        //sprite.material.color = new Color(1, 1, 1, 1-alfa);
-        //gameObject.transform.localScale = new Vector3(alfa*0.5f,alfa*0.5f,0);
+        alfa = remain / span;
+        sprite.material.color = new Color(1, 1, 1, 1-alfa);
+        gameObject.transform.localScale = new Vector3(alfa*0.5f,alfa*0.5f,0);
         if (remain < 0)
         {
             Destroy(gameObject);

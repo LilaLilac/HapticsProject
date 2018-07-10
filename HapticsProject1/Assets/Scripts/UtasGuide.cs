@@ -49,8 +49,9 @@ public class UtasGuide : MonoBehaviour
 
 
         span = end - begin;
+        
 
-        endposision = new Vector3(endx, endy, 0);
+        //endposision = new Vector3(endx, endy, 0);
 
 
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();

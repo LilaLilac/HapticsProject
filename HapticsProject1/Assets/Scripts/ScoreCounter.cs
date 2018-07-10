@@ -11,7 +11,7 @@ public class ScoreCounter : MonoBehaviour {
     public int great;
     public int good;
     public int bad;
-    public int totalnotes=100;
+    public int totalnotes=41;
 
     // Use this for initialization
     void Start () {
